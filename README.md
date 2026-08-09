@@ -12,11 +12,11 @@ A fictional e-commerce concept for a niche fragrance boutique, built as a fully 
 
 | Home (Light) | Home (Dark) |
 |---|---|
-| ![Homepage in light mode](docs/screenshots/home-desktop-light.jpg) | ![Homepage in dark mode](docs/screenshots/home-desktop-darkmode.jpg) |
+| ![Homepage in light mode](docs/screenshots/en-home-desktop-lightmode.png) | ![Homepage in dark mode](docs/screenshots/en-home-desktop-darkmode.png) |
 
-| Collection | Mobile |
+| Collection (Light) | Collection (Dark) |
 |---|---|
-| ![Shop / collection page with filters](docs/screenshots/shop-desktop-darkmode.jpg) | ![Homepage on mobile](docs/screenshots/home-mobile.jpg) |
+| ![Collection page in light mode](docs/screenshots/en-collection-desktop-lightmode.png) | ![Collection page in dark mode](docs/screenshots/en-collection-desktop-darkmode.png) |
 
 ## Features
 

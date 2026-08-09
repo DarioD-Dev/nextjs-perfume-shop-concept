@@ -12,11 +12,11 @@ Ein fiktives E-Commerce-Konzept für eine Nischenparfümerie, umgesetzt als voll
 
 | Startseite (Light) | Startseite (Dark) |
 |---|---|
-| ![Startseite im Light Mode](docs/screenshots/home-desktop-light.jpg) | ![Startseite im Dark Mode](docs/screenshots/home-desktop-darkmode.jpg) |
+| ![Startseite im Light Mode](docs/screenshots/de-home-desktop-lightmode.png) | ![Startseite im Dark Mode](docs/screenshots/de-home-desktop-darkmode.png) |
 
-| Kollektion | Mobile |
+| Kollektion (Light) | Kollektion (Dark) |
 |---|---|
-| ![Shop-/Kollektionsseite mit Filtern](docs/screenshots/shop-desktop-darkmode.jpg) | ![Startseite auf Mobile](docs/screenshots/home-mobile.jpg) |
+| ![Kollektionsseite im Light Mode](docs/screenshots/de-collection-desktop-lightmode.png) | ![Kollektionsseite im Dark Mode](docs/screenshots/de-collection-desktop-darkmode.png) |
 
 ## Funktionen
 
