@@ -1,0 +1,78 @@
+/* ─── Layer 1: primitives. Raw values. Never used directly in a component. ─── */
+:root {
+  /* Dario's palette — used exactly as given */
+  --mdp-ink-950: #1d1716; /* near-black, warm brown */
+  --mdp-ink-900: #402a23; /* dark chocolate brown */
+  --mdp-ink-800: #573b30; /* one step lighter — dark-mode raised surfaces, so cards/dropdowns read as elevated instead of matching muted exactly */
+  --mdp-gold-600: #a55233; /* rust/terracotta — light-mode accent */
+  --mdp-gold-400: #f3bc77; /* warm gold/peach — dark-mode accent */
+
+  /* Derived to complete the palette (not in the original 4 — light beige
+     background, borders, muted text). Swap these if you have exact hexes
+     in mind. */
+  --mdp-ink-600: #6b5248; /* muted warm brown — light-mode secondary text */
+  --mdp-ink-300: #c9b8ae; /* light warm tan — dark-mode secondary text / light-mode strong border */
+  --mdp-ink-100: #e8ddd3; /* pale warm tan — light-mode subtle border */
+
+  --mdp-bone-25: #fbf5ec; /* lightest warm cream — light-mode raised surfaces (cards, dropdowns), replaces stark white */
+  --mdp-bone-50: #f3e8d9; /* warm beige — light-mode page background */
+  --mdp-bone-100: #e9dbc8; /* deeper warm tan, muted — light-mode card-alt background */
+
+  --mdp-gold-500: #c17a4a; /* rust↔gold midpoint — hover state, both themes */
+
+  --mdp-red-500: #c0392b; /* form errors only */
+}
+
+/* ─── Layer 2: semantic. THE ONLY NAMES THAT DIVERGE PER THEME. ─── */
+:root,
+[data-theme="light"] {
+  --surface-base: var(--mdp-bone-50);
+  --surface-raised: var(--mdp-bone-25);
+  --surface-inverse: var(--mdp-ink-950);
+  --surface-muted: var(--mdp-bone-100);
+
+  --text-primary: var(--mdp-ink-950);
+  --text-secondary: var(--mdp-ink-600);
+  --text-on-inverse: var(--mdp-bone-50);
+  --text-on-accent: var(--mdp-bone-50); /* rust is dark enough to need light text on top */
+
+  --accent-gold: var(--mdp-gold-600);
+  --accent-gold-hover: var(--mdp-gold-500);
+
+  --border-subtle: var(--mdp-ink-100);
+  --border-strong: var(--mdp-ink-300);
+  --focus-ring: var(--mdp-gold-600);
+  --danger: var(--mdp-red-500);
+
+  /* Fixed dark editorial treatment — deliberately identical in both theme
+     blocks. For elements that must always read as "dark band" (promo bar,
+     footer, hero backdrop, image scrims): NOT theme-relative like
+     surface-inverse, which flips to light in dark mode and washes out
+     whatever sits on top of it. */
+  --surface-editorial: var(--mdp-ink-950);
+  --text-on-editorial: var(--mdp-bone-50);
+}
+
+[data-theme="dark"] {
+  --surface-base: var(--mdp-ink-950);
+  --surface-raised: var(--mdp-ink-800);
+  --surface-inverse: var(--mdp-bone-50);
+  --surface-muted: var(--mdp-ink-900);
+
+  --text-primary: var(--mdp-bone-50);
+  --text-secondary: var(--mdp-ink-300);
+  --text-on-inverse: var(--mdp-ink-950);
+  --text-on-accent: var(--mdp-ink-950); /* peach-gold is light — dark text on top */
+
+  --accent-gold: var(--mdp-gold-400); /* lighter — gold on black needs more luminance */
+  --accent-gold-hover: var(--mdp-gold-500);
+
+  --border-subtle: #4d332b;
+  --border-strong: #6b4a3d;
+  --focus-ring: var(--mdp-gold-400);
+  --danger: #e05a48;
+
+  /* Same fixed values as the light block on purpose — see comment there. */
+  --surface-editorial: var(--mdp-ink-950);
+  --text-on-editorial: var(--mdp-bone-50);
+}

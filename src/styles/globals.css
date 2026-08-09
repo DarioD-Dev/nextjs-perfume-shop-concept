@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./theme.css";
+
+/* class/attribute-based dark mode instead of prefers-color-scheme,
+   so the header toggle actually controls it */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@layer base {
+  html {
+    /* Explicit per-theme value, not "light dark" — this site's dark mode
+       is an explicit [data-theme] toggle, not prefers-color-scheme, so
+       native scrollbars/form controls need to follow the same attribute
+       instead of the OS preference (which can disagree with the toggle). */
+    color-scheme: light;
+  }
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+  body {
+    background-color: var(--surface-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans-ui);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 300;
+  }
+  ::selection {
+    background: var(--accent-gold);
+    color: var(--text-on-accent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Every clickable element gets a pointer cursor — one global rule instead
+     of adding cursor-pointer by hand on every Button/Link/Accordion/etc.
+     Native <button> defaults to cursor:default in browsers; only <a href>
+     gets a pointer automatically. Disabled controls get not-allowed
+     instead, since a pointer would imply they're clickable. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  summary,
+  input[type="submit"],
+  input[type="button"],
+  input[type="checkbox"],
+  input[type="radio"],
+  label[for] {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
+/* Logo letter-wave: plays once automatically on load (per-letter
+   animation-delay below), and the same lift replays on hover via a
+   regular transition — see Logo.tsx. Motion-safe only. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes logo-wave {
+    0% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-0.2em);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  /* BrandStrip marquee: track renders the brand list twice back to back,
+     scrolls exactly one copy's width (-50%), then the loop restarts —
+     since both halves are identical, the reset is invisible. */
+  @keyframes marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* PageTransition: plays whenever the pathname changes, see the component. */
+  @keyframes page-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Price range slider (PriceRangeFilter): two overlapping native range
+   inputs share one visual track/fill rendered behind them in the
+   component. Native track chrome is stripped here so only that shared
+   track and a branded thumb are visible — pointer-events stay off the
+   input except over the thumb itself, so both inputs remain independently
+   draggable despite fully overlapping. */
+.price-range-input {
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+}
+.price-range-input::-webkit-slider-runnable-track {
+  background: transparent;
+}
+.price-range-input::-moz-range-track {
+  background: transparent;
+}
+.price-range-input::-webkit-slider-thumb {
+  appearance: none;
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--accent-gold);
+  border: 2px solid var(--surface-raised);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+  cursor: pointer;
+}
+.price-range-input::-moz-range-thumb {
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--accent-gold);
+  border: 2px solid var(--surface-raised);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+  cursor: pointer;
+}

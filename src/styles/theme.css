@@ -1,0 +1,37 @@
+@theme inline {
+  /* colours — the --color-* namespace generates bg-/text-/border-/ring- utilities */
+  --color-surface: var(--surface-base);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-editorial: var(--surface-editorial);
+
+  --color-text: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-on-inverse: var(--text-on-inverse);
+  --color-text-on-editorial: var(--text-on-editorial);
+  --color-text-on-accent: var(--text-on-accent);
+
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-gold-hover: var(--accent-gold-hover);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-danger: var(--danger);
+
+  /* typography */
+  --font-display: var(--font-serif);
+  --font-sans: var(--font-sans-ui);
+
+  --text-display-lg: 4.5rem;
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-md: 3rem;
+  --text-display-md--line-height: 1.1;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--letter-spacing: 0.18em;
+
+  /* spacing rhythm */
+  --spacing-section: 6rem;
+  --spacing-section-lg: 9rem;
+}
