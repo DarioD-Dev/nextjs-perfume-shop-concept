@@ -8,17 +8,19 @@ const TILES = [
   {
     category: "damen",
     labelKey: "categoryDamen",
-    image: "https://images.unsplash.com/photo-1608721279136-cd41b752fa41?w=800&q=80&auto=format&fit=crop",
+    // Reuses the Fleur Nocturne product photo — same file as in products.ts,
+    // not a duplicate download.
+    image: "/images/products/maison-verrier-fleur-nocturne.jpg",
   },
   {
     category: "herren",
     labelKey: "categoryHerren",
-    image: "https://images.unsplash.com/photo-1598634222670-87c5f558119c?w=800&q=80&auto=format&fit=crop",
+    image: "/images/products/rive-nocturne-bergamote-sauvage.jpg",
   },
   {
     category: "unisex",
     labelKey: "categoryUnisex",
-    image: "https://images.unsplash.com/photo-1733660227163-01bc46e0d7d7?w=800&q=80&auto=format&fit=crop",
+    image: "/images/products/noir-vermeil-ambre-absolu.jpg",
   },
 ] as const;
 

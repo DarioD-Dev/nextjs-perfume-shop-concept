@@ -39,7 +39,7 @@ export default async function HomePage({ params }: Props) {
           <div className="flex flex-col gap-24">
             <Reveal direction="left">
               <EditorialSplit
-                image="https://images.unsplash.com/photo-1543422655-ac1c6ca993ed?w=1000&q=80&auto=format&fit=crop"
+                image="/images/editorial/split-1.jpg"
                 alt=""
                 eyebrow={t("editorial1Eyebrow")}
                 title={t("editorial1Title")}
@@ -48,7 +48,7 @@ export default async function HomePage({ params }: Props) {
             </Reveal>
             <Reveal direction="right">
               <EditorialSplit
-                image="https://images.unsplash.com/photo-1676951334972-2e65e67f4cbe?w=1000&q=80&auto=format&fit=crop"
+                image="/images/editorial/split-2.jpg"
                 alt=""
                 eyebrow={t("editorial2Eyebrow")}
                 title={t("editorial2Title")}
