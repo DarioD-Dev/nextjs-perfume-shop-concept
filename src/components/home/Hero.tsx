@@ -9,7 +9,7 @@ export async function Hero() {
 
   return (
     <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-surface-editorial">
-      <HeroImage src="https://images.unsplash.com/photo-1627933234009-0f5ce6eb4e3a?w=1920&q=80&auto=format&fit=crop" />
+      <HeroImage src="/images/editorial/hero.jpg" />
       <div className="relative z-10 flex flex-col items-center gap-5 px-6 text-center">
         <Text variant="eyebrow" className="text-text-on-editorial/80">
           {t("heroEyebrow")}

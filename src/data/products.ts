@@ -1,12 +1,14 @@
 import type { Product } from "./types";
 
 /**
- * Photos are hotlinked from Unsplash's CDN (free license, no local copies) — see
- * public/CREDITS.md for photographer credits. Consistent crop/quality params keep
- * the catalogue visually uniform.
+ * Photos are self-hosted under public/images/products/ (downloaded once from
+ * Unsplash, free license, no attribution required) — see public/CREDITS.md.
+ * Live-hotlinking these from images.unsplash.com previously caused 500/504s
+ * under real load, once the Next.js image optimizer had to fetch them
+ * server-side on a cache miss.
  */
-function unsplash(id: string): string {
-  return `https://images.unsplash.com/${id}?w=1200&q=80&auto=format&fit=crop`;
+function product(slug: string): string {
+  return `/images/products/${slug}.jpg`;
 }
 
 export const products: Product[] = [
@@ -22,7 +24,7 @@ export const products: Product[] = [
       { ml: 50, priceEur: 340 },
     ],
     image: {
-      src: unsplash("photo-1594125311687-3b1b3eafa9f4"),
+      src: product("maison-verrier-oud-imperial"),
       alt: { de: "Flakon von Oud Impérial auf hellem Untergrund", en: "Oud Impérial bottle on a light surface" },
     },
     notes: {
@@ -52,7 +54,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 175 },
     ],
     image: {
-      src: unsplash("photo-1608721279136-cd41b752fa41"),
+      src: product("maison-verrier-fleur-nocturne"),
       alt: { de: "Flakon von Fleur Nocturne in rosa Licht", en: "Fleur Nocturne bottle in pink light" },
     },
     notes: {
@@ -82,7 +84,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 168 },
     ],
     image: {
-      src: unsplash("photo-1638295916768-459f6cf440bc"),
+      src: product("atelier-solane-ambre-dore"),
       alt: { de: "Flakon von Ambre Doré auf einem Tisch", en: "Ambre Doré bottle on a table" },
     },
     notes: {
@@ -109,7 +111,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 128 },
     ],
     image: {
-      src: unsplash("photo-1705899853374-d91c048b81d2"),
+      src: product("atelier-solane-neroli-sauvage"),
       alt: { de: "Parfümflakon auf einem Stein", en: "Fragrance bottle on a rock" },
     },
     notes: {
@@ -136,7 +138,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 178 },
     ],
     image: {
-      src: unsplash("photo-1705899844877-81bb0a0665c1"),
+      src: product("casa-brunelli-cuir-vetiver"),
       alt: { de: "Flasche Eau de Parfum neben Steinen", en: "Eau de parfum bottle next to stones" },
     },
     notes: {
@@ -163,7 +165,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 255 },
     ],
     image: {
-      src: unsplash("photo-1458538977777-0549b2370168"),
+      src: product("casa-brunelli-rosa-selvaggia"),
       alt: { de: "Klarer Parfümflakon", en: "Clear fragrance bottle" },
     },
     notes: {
@@ -190,7 +192,7 @@ export const products: Product[] = [
       { ml: 50, priceEur: 355 },
     ],
     image: {
-      src: unsplash("photo-1733660227163-01bc46e0d7d7"),
+      src: product("noir-vermeil-ambre-absolu"),
       alt: { de: "Flakon auf weißem Tuch", en: "Bottle on white fabric" },
     },
     notes: {
@@ -217,7 +219,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 172 },
     ],
     image: {
-      src: unsplash("photo-1553699357-fdefb876c402"),
+      src: product("noir-vermeil-nuit-blanche"),
       alt: { de: "Eau de Parfum Flakon in Nahaufnahme", en: "Close-up of an eau de parfum bottle" },
     },
     notes: {
@@ -244,7 +246,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 124 },
     ],
     image: {
-      src: unsplash("photo-1598634222670-87c5f558119c"),
+      src: product("rive-nocturne-bergamote-sauvage"),
       alt: { de: "Parfümflakon vor dunklem Hintergrund", en: "Fragrance bottle against a dark background" },
     },
     notes: {
@@ -271,7 +273,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 182 },
     ],
     image: {
-      src: unsplash("photo-1597317628840-d3472f7aa7fc"),
+      src: product("rive-nocturne-iris-nocturne"),
       alt: { de: "Flasche auf gelbem Untergrund", en: "Bottle on a yellow surface" },
     },
     notes: {
@@ -298,7 +300,7 @@ export const products: Product[] = [
       { ml: 50, priceEur: 348 },
     ],
     image: {
-      src: unsplash("photo-1720423514789-15a33e59fc81"),
+      src: product("ombre-cuir-santal-fume"),
       alt: { de: "Klarglasflasche mit silbernem Deckel", en: "Clear glass bottle with a silver cap" },
     },
     notes: {
@@ -325,7 +327,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 166 },
     ],
     image: {
-      src: unsplash("photo-1720423738890-37689a6f6b95"),
+      src: product("ombre-cuir-musc-blanc"),
       alt: { de: "Rote Glasflasche mit Verschluss", en: "Red glass bottle with a cap" },
     },
     notes: {
@@ -352,7 +354,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 174 },
     ],
     image: {
-      src: unsplash("photo-1647507653704-bde7f2d6dbf0"),
+      src: product("lumiere-sauvage-jasmin-dore"),
       alt: { de: "Parfümflakon auf einem Ständer", en: "Fragrance bottle on a stand" },
     },
     notes: {
@@ -379,7 +381,7 @@ export const products: Product[] = [
       { ml: 100, priceEur: 129 },
     ],
     image: {
-      src: unsplash("photo-1571206508927-2ef3026ada5d"),
+      src: product("lumiere-sauvage-vetiver-imperial"),
       alt: { de: "Zwei Flaschen auf weißem Textil", en: "Two bottles on white fabric" },
     },
     notes: {

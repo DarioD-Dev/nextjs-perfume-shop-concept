@@ -24,7 +24,7 @@ export default async function AboutPage({ params }: Props) {
       <PageHeader title={t("title")} subtitle={t("body")} />
       <Section>
         <EditorialSplit
-          image="https://images.unsplash.com/photo-1541108564883-bec8126021f5?w=1000&q=80&auto=format&fit=crop"
+          image="/images/editorial/about.jpg"
           alt=""
           eyebrow={t("storyEyebrow")}
           title={t("storyTitle")}
