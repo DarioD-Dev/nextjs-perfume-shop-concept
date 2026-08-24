@@ -36,6 +36,7 @@ Ein fiktives E-Commerce-Konzept für eine Nischenparfümerie, umgesetzt als voll
 - [next-intl](https://next-intl.dev/) für Internationalisierung
 - [next-themes](https://github.com/pacocoursey/next-themes) für den Theme-Wechsel
 - Zod für Formularvalidierung
+- [Resend](https://resend.com/) für das Kontaktformular (optional, siehe unten)
 - Deployed auf [Vercel](https://vercel.com/)
 
 ## Erste Schritte
@@ -47,6 +48,16 @@ npm run dev
 
 Danach [http://localhost:3000](http://localhost:3000) öffnen.
 
+### Kontaktformular — E-Mail-Versand
+
+Ohne weitere Einrichtung validiert das Formular korrekt, loggt die Nachricht aber nur in die Server-Konsole — nichts geht verloren, aber es wird auch nichts verschickt. Damit es wirklich mailt:
+
+1. Kostenlosen [Resend](https://resend.com/)-Account + API-Key anlegen.
+2. In `.env.local` ergänzen: `RESEND_API_KEY=re_...`
+3. Optional `CONTACT_FROM_EMAIL` setzen, sobald eine verifizierte Absender-Domain existiert (Standard ist Resends geteilte Test-Adresse).
+
+Nachrichten gehen an die auf der Kontaktseite angezeigte Adresse, die Adresse der/des Besuchenden wird als Reply-To gesetzt.
+
 ## Status
 
-Das Frontend ist fertig und deployed. Ein echtes Backend (Bestellung, Zahlung, Lagerbestand) war für diese Phase bewusst nicht Teil des Scopes.
+Das Frontend ist fertig und deployed. Ein echtes Backend (Bestellung, Zahlung, Lagerbestand) war für diese Phase bewusst nicht Teil des Scopes — der "In den Warenkorb"-Ablauf legt das auch direkt in seiner eigenen Bestätigung offen (`Product.addedToCart`), statt es stillschweigend vorzutäuschen.
