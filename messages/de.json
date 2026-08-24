@@ -113,7 +113,9 @@
         "success": "Danke für deine Nachricht! Wir melden uns bald bei dir.",
         "error": "Bitte überprüfe deine Eingaben und versuche es erneut.",
         "addressLabel": "Adresse",
-        "mapTitle": "Standort auf Google Maps"
+        "mapTitle": "Standort auf Google Maps",
+        "mapNotice": "Beim Laden der Karte werden Daten an Google übertragen.",
+        "mapLoad": "Karte laden"
     },
     "Faq": {
         "title": "Häufige Fragen",

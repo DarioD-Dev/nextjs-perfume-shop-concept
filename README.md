@@ -36,6 +36,7 @@ A fictional e-commerce concept for a niche fragrance boutique, built as a fully 
 - [next-intl](https://next-intl.dev/) for internationalization
 - [next-themes](https://github.com/pacocoursey/next-themes) for theme switching
 - Zod for form validation
+- [Resend](https://resend.com/) for the contact form (optional — see below)
 - Deployed on [Vercel](https://vercel.com/)
 
 ## Getting Started
@@ -47,6 +48,16 @@ npm run dev
 
 Then open [http://localhost:3000](http://localhost:3000).
 
+### Contact form email delivery
+
+Without any setup, the contact form validates properly but only logs the message to the server console — nothing is silently lost, but nothing is emailed either. To make it actually send:
+
+1. Create a free [Resend](https://resend.com/) account and API key.
+2. Add to `.env.local`: `RESEND_API_KEY=re_...`
+3. Optionally set `CONTACT_FROM_EMAIL` once a verified sending domain exists (defaults to Resend's shared test address).
+
+Messages go to the address shown on the contact page, with the visitor's address set as reply-to.
+
 ## Status
 
-Frontend is complete and deployed. A real backend (ordering, payments, inventory) was intentionally out of scope for this phase.
+Frontend is complete and deployed. A real backend (ordering, payments, inventory) was intentionally out of scope for this phase — the "add to cart" flow is disclosed as a demo in its own confirmation copy (`Product.addedToCart`), not silently faked.

@@ -1,5 +1,6 @@
 "use server";
 
+import { Resend } from "resend";
 import { z } from "zod";
 
 const ContactSchema = z.object({
@@ -17,9 +18,12 @@ export type ContactFormState = {
   };
 };
 
-// Demo only — validates and reports success, but nothing is actually sent
-// yet. This is the backend seam: swap the body once a real mail/CRM
-// integration exists, no call site (ContactForm) has to change.
+const CONTACT_TO_EMAIL = "dario.dominkovic@hotmail.com";
+
+// Without RESEND_API_KEY (e.g. this demo, not yet a commissioned client site)
+// the form still validates properly but only logs instead of sending —
+// nothing silently fails, and turning it into a real mail flow is a one-env-
+// var change, not a rewrite. See README for setup.
 export async function submitContactForm(
   _prevState: ContactFormState,
   formData: FormData,
@@ -32,6 +36,28 @@ export async function submitContactForm(
 
   if (!result.success) {
     return { status: "error", fieldErrors: z.flattenError(result.error).fieldErrors };
+  }
+
+  const { name, email, message } = result.data;
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.info(`[contact] RESEND_API_KEY not set — would have sent:\n${name} <${email}>\n${message}`);
+    return { status: "success" };
+  }
+
+  try {
+    const resend = new Resend(apiKey);
+    const { error } = await resend.emails.send({
+      from: process.env.CONTACT_FROM_EMAIL ?? "Maison Aurelle <onboarding@resend.dev>",
+      to: CONTACT_TO_EMAIL,
+      replyTo: email,
+      subject: `Neue Nachricht von ${name}`,
+      text: `${message}\n\n—\n${name} <${email}>`,
+    });
+    if (error) throw error;
+  } catch (error) {
+    console.error("[contact] Resend send failed:", error);
+    return { status: "error" };
   }
 
   return { status: "success" };

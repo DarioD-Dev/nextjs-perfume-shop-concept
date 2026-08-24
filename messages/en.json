@@ -113,7 +113,9 @@
         "success": "Thanks for your message! We'll get back to you soon.",
         "error": "Please check your entries and try again.",
         "addressLabel": "Address",
-        "mapTitle": "Location on Google Maps"
+        "mapTitle": "Location on Google Maps",
+        "mapNotice": "Loading the map sends data to Google.",
+        "mapLoad": "Load map"
     },
     "Faq": {
         "title": "Frequently asked questions",
