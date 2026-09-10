@@ -3,10 +3,12 @@ import { getPathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { getAllSlugs } from "@/lib/products";
 
-// Placeholder — update once deployed (Task 15). Harmless while robots.ts
-// disallows everything, but should be correct before the pitch-phase
-// noindex is ever lifted.
-const BASE_URL = "https://maison-de-parfum-demo.vercel.app";
+// The live deployment, named after this repository rather than after the
+// fictional shop — these are concept demos, and a made-up business name in
+// the URL reads like a real client site. This was a placeholder pointing at
+// a domain that never existed, so every entry in the published sitemap was
+// a dead link.
+const BASE_URL = "https://nextjs-perfume-shop-concept.vercel.app";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await getAllSlugs();
