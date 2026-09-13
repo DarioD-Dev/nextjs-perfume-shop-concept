@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
+import { assertLocale } from "@/i18n/locale";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { PageTransition } from "@/components/layout/PageTransition";
@@ -16,13 +16,8 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-type Props = {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Promise<Metadata> {
+  const locale = assertLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: "Meta" });
 
   return {
@@ -39,13 +34,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function LocaleLayout({ children, params }: Props) {
-  const { locale } = await params;
-
-  if (!hasLocale(routing.locales, locale)) {
-    notFound();
-  }
-
+export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
+  // assertLocale ersetzt die frühere hasLocale/notFound-Kaskade: dieselbe
+  // Prüfung, aber an genau einer Stelle für alle Routen.
+  const locale = assertLocale((await params).locale);
   setRequestLocale(locale);
   // Header (Logo/Nav/MobileNav/LocaleSwitcher/ThemeToggle) and Footer render
   // on every page from this layout, outside of {children} — Header/Nav are
