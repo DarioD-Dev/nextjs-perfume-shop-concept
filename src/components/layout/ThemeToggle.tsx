@@ -34,9 +34,15 @@ export function ThemeToggle({ className }: { className?: string }) {
       className={className}
     >
       {isDark ? (
-        <Sun size={18} className="transition-transform duration-500 ease-out group-hover:rotate-90" />
+        <Sun
+          size={18}
+          className="transition-transform duration-500 ease-out group-hover:rotate-90"
+        />
       ) : (
-        <Moon size={18} className="transition-transform duration-500 ease-out group-hover:-rotate-45" />
+        <Moon
+          size={18}
+          className="transition-transform duration-500 ease-out group-hover:-rotate-45"
+        />
       )}
     </IconButton>
   );

@@ -28,7 +28,8 @@ export function SortSelect({ className }: { className?: string }) {
     if (!open) return;
 
     function onPointerDown(event: PointerEvent) {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+      if (!(event.target instanceof Node) || !rootRef.current?.contains(event.target))
+        setOpen(false);
     }
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);

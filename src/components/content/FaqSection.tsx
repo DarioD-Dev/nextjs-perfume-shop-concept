@@ -18,7 +18,10 @@ export async function FaqSection() {
               // everything else as plain text if no tag is present, so
               // this is safe to apply to every answer uniformly.
               link: (chunks) => (
-                <Link href="/contact" className="underline underline-offset-2 hover:text-accent-gold">
+                <Link
+                  href="/contact"
+                  className="underline underline-offset-2 hover:text-accent-gold"
+                >
                   {chunks}
                 </Link>
               ),

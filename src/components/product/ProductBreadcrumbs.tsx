@@ -18,7 +18,10 @@ export async function ProductBreadcrumbs({
   const items = [
     { label: tNav("home"), url: getPathname({ locale, href: "/" }) },
     { label: tNav("shop"), url: getPathname({ locale, href: "/shop" }) },
-    { label: `${brand} ${name}`, url: getPathname({ locale, href: { pathname: "/shop/[slug]", params: { slug } } }) },
+    {
+      label: `${brand} ${name}`,
+      url: getPathname({ locale, href: { pathname: "/shop/[slug]", params: { slug } } }),
+    },
   ];
 
   const jsonLd = {
@@ -33,8 +36,14 @@ export async function ProductBreadcrumbs({
   };
 
   return (
-    <nav aria-label="Breadcrumb" className="font-sans text-xs uppercase tracking-wide text-text-secondary">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+    <nav
+      aria-label="Breadcrumb"
+      className="font-sans text-xs uppercase tracking-wide text-text-secondary"
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ol className="flex flex-wrap items-center gap-2">
         <li>
           <Link href="/" className="transition-colors hover:text-accent-gold">

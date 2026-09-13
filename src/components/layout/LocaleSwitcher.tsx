@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { routing, type Locale } from "@/i18n/routing";
+import { routing } from "@/i18n/routing";
 import { IconButton } from "@/components/ui/IconButton";
 
 // Only two locales exist, so a single toggle (shows the current one, click
@@ -11,7 +11,9 @@ import { IconButton } from "@/components/ui/IconButton";
 // pill pair — especially in the mobile header, where every icon-cluster
 // pixel counts.
 export function LocaleSwitcher({ className }: { className?: string }) {
-  const locale = useLocale() as Locale;
+  // Kein Cast mehr nötig: Seit die AppConfig in src/global.d.ts steht,
+  // liefert useLocale() bereits die Union statt eines nackten string.
+  const locale = useLocale();
   const t = useTranslations("Header");
   const router = useRouter();
   const pathname = usePathname();

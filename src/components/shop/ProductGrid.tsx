@@ -28,7 +28,7 @@ export function ProductGrid({ products, locale }: { products: ResolvedProduct[];
     if (!("IntersectionObserver" in window)) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const cards = [...node.children] as HTMLElement[];
+    const cards = [...node.querySelectorAll<HTMLElement>(":scope > *")];
     cards.forEach((card) => card.classList.add("is-pending"));
 
     const observer = new IntersectionObserver(
@@ -50,6 +50,8 @@ export function ProductGrid({ products, locale }: { products: ResolvedProduct[];
         <div
           key={product.slug}
           className="reveal"
+          // Cast bleibt: React.CSSProperties kennt keine CSS-Variablen als
+          // Schlüssel. Bekannte Lücke im Typ, kein Zweifelsfall.
           style={{ "--reveal-delay": `${Math.min(index, 11) * 60}ms` } as React.CSSProperties}
         >
           <ProductCard product={product} locale={locale} />

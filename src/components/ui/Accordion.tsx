@@ -13,7 +13,10 @@ export function Accordion({
   defaultOpen?: boolean;
 }) {
   return (
-    <details className={cn("group border-b border-border-subtle py-4", className)} open={defaultOpen}>
+    <details
+      className={cn("group border-b border-border-subtle py-4", className)}
+      open={defaultOpen}
+    >
       <summary className="flex cursor-pointer list-none items-center justify-between font-sans text-text [&::-webkit-details-marker]:hidden">
         {title}
         <span className="ml-4 text-accent-gold transition-transform group-open:rotate-45">+</span>

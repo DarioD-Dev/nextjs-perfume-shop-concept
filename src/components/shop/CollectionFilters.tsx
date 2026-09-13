@@ -1,6 +1,17 @@
 "use client";
 
-import { ChevronDown, Flower2, Leaf, Mars, Search, Snowflake, Sun, Venus, VenusAndMars, X } from "lucide-react";
+import {
+  ChevronDown,
+  Flower2,
+  Leaf,
+  Mars,
+  Search,
+  Snowflake,
+  Sun,
+  Venus,
+  VenusAndMars,
+  X,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
@@ -128,7 +139,8 @@ export function CollectionFilters({
   useEffect(() => {
     if (!moreFiltersOpen) return;
     function onPointerDown(event: PointerEvent) {
-      if (!moreFiltersRef.current?.contains(event.target as Node)) setMoreFiltersOpen(false);
+      if (!(event.target instanceof Node) || !moreFiltersRef.current?.contains(event.target))
+        setMoreFiltersOpen(false);
     }
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setMoreFiltersOpen(false);
@@ -156,7 +168,10 @@ export function CollectionFilters({
       };
     }),
   ];
-  const noteOptions = [{ value: "", label: t("allNotes") }, ...notes.map((note) => ({ value: note, label: note }))];
+  const noteOptions = [
+    { value: "", label: t("allNotes") },
+    ...notes.map((note) => ({ value: note, label: note })),
+  ];
   const concentrationOptions = [
     { value: "", label: t("allConcentrations") },
     ...concentrations.map((concentration) => ({

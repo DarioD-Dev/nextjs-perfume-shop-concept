@@ -22,7 +22,9 @@ export function ProductCard({ product, locale }: { product: ResolvedProduct; loc
         />
       </ProductImageCursor>
       <div className="flex flex-col gap-1">
-        <p className="font-sans text-xs uppercase tracking-wide text-text-secondary">{product.brand}</p>
+        <p className="font-sans text-xs uppercase tracking-wide text-text-secondary">
+          {product.brand}
+        </p>
         <p className="font-display text-lg text-text">{product.name}</p>
         <p className="font-sans text-sm text-text-secondary">{formatPrice(price, locale)}</p>
       </div>

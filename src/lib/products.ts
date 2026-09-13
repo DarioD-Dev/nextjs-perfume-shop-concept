@@ -35,7 +35,11 @@ export type ProductFilters = {
 };
 
 function productNotes(product: Product, locale: Locale): string[] {
-  return [...product.notes.top[locale], ...product.notes.heart[locale], ...product.notes.base[locale]];
+  return [
+    ...product.notes.top[locale],
+    ...product.notes.heart[locale],
+    ...product.notes.base[locale],
+  ];
 }
 
 function applyFilters(list: Product[], locale: Locale, filters?: ProductFilters): Product[] {
@@ -47,11 +51,18 @@ function applyFilters(list: Product[], locale: Locale, filters?: ProductFilters)
   if (filters?.category) {
     result = result.filter((p) => p.category === filters.category);
   }
+  // Lokale Konstanten statt Casts: Die Verengung durch `if (filters?.season)`
+  // gilt innerhalb der Pfeilfunktion nicht mehr, weil filters dort erneut
+  // gelesen wird und zwischenzeitlich verändert worden sein könnte. Eine
+  // Konstante trägt die Verengung mit — das ist dieselbe Sicherheit, die der
+  // Cast nur behauptet hat.
   if (filters?.season) {
-    result = result.filter((p) => p.season.includes(filters.season as Season));
+    const season = filters.season;
+    result = result.filter((p) => p.season.includes(season));
   }
   if (filters?.note) {
-    result = result.filter((p) => productNotes(p, locale).includes(filters.note as string));
+    const note = filters.note;
+    result = result.filter((p) => productNotes(p, locale).includes(note));
   }
   if (filters?.concentration) {
     result = result.filter((p) => p.concentration === filters.concentration);
@@ -87,7 +98,10 @@ function applyFilters(list: Product[], locale: Locale, filters?: ProductFilters)
 // API/CMS replaces the dummy catalogue, only the body of each function
 // changes — no page, component, or call site has to move. See Bauplan §7.
 
-export async function getProducts(locale: Locale, filters?: ProductFilters): Promise<ResolvedProduct[]> {
+export async function getProducts(
+  locale: Locale,
+  filters?: ProductFilters,
+): Promise<ResolvedProduct[]> {
   return applyFilters(products, locale, filters).map((p) => resolve(p, locale));
 }
 
@@ -96,7 +110,11 @@ export async function getProduct(locale: Locale, slug: string): Promise<Resolved
   return product ? resolve(product, locale) : null;
 }
 
-export async function getRelatedProducts(locale: Locale, slug: string, limit = 4): Promise<ResolvedProduct[]> {
+export async function getRelatedProducts(
+  locale: Locale,
+  slug: string,
+  limit = 4,
+): Promise<ResolvedProduct[]> {
   const current = products.find((p) => p.slug === slug);
   if (!current) return [];
 
@@ -128,5 +146,8 @@ export async function getAllNotes(locale: Locale): Promise<string[]> {
 
 export async function getPriceRange(): Promise<{ min: number; max: number }> {
   const prices = products.map(minPrice);
-  return { min: Math.floor(Math.min(...prices) / 10) * 10, max: Math.ceil(Math.max(...prices) / 10) * 10 };
+  return {
+    min: Math.floor(Math.min(...prices) / 10) * 10,
+    max: Math.ceil(Math.max(...prices) / 10) * 10,
+  };
 }
