@@ -53,6 +53,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   // picked per-page (see e.g. shop/page.tsx) so each page's RSC payload only
   // carries the translations its own client components actually use.
   const messages = pickMessages(await getMessages(), ["Header", "Nav"]);
+  const t = await getTranslations({ locale, namespace: "Header" });
 
   return (
     // overflow-x-hidden on <html> itself, not just <body>: a safety net
@@ -70,8 +71,24 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="flex min-h-screen flex-col antialiased">
         <NextIntlClientProvider messages={messages}>
           <Providers>
+            {/* Skip-Link (WCAG 2.4.1, Level A). Ohne ihn musste sich eine
+                Tastaturnutzerin auf JEDER Seite durch sieben Stationen des
+                Kopfbereichs arbeiten — Logo, vier Navigationspunkte,
+                Sprach- und Themenumschalter —, bevor sie den Inhalt
+                erreichte. Restaurant, Friseur und Portfolio hatten das
+                längst; dieses Projekt war das letzte ohne.
+
+                Serverseitig gerendert: Der Text kommt über getTranslations
+                statt über den Client-Provider, kostet also kein zusätzliches
+                JavaScript. Unsichtbar bis zum Fokus. */}
+            <a
+              href="#inhalt"
+              className="sr-only rounded-full bg-accent-copper px-5 py-2.5 font-sans text-sm font-medium text-text-on-editorial focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50"
+            >
+              {t("skipToContent")}
+            </a>
             <Header />
-            <main className="flex-1">
+            <main id="inhalt" className="flex-1">
               <PageTransition>{children}</PageTransition>
             </main>
             <Footer />
