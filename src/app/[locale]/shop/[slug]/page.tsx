@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { getMessages, setRequestLocale } from "next-intl/server";
+import { assertLocale } from "@/i18n/locale";
 import { ProductAccordion } from "@/components/product/ProductAccordion";
 import { ProductBreadcrumbs } from "@/components/product/ProductBreadcrumbs";
 import { ProductGallery } from "@/components/product/ProductGallery";
@@ -11,22 +12,20 @@ import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { Container } from "@/components/ui/Container";
 import { Rule } from "@/components/ui/Rule";
 import { Section } from "@/components/ui/Section";
-import type { Locale } from "@/i18n/routing";
 import { CONCENTRATION_LABELS } from "@/lib/concentration";
 import { pickMessages } from "@/lib/pickMessages";
 import { getAllSlugs, getProduct } from "@/lib/products";
-
-type Props = {
-  params: Promise<{ locale: Locale; slug: string }>;
-};
 
 export async function generateStaticParams() {
   const slugs = await getAllSlugs();
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale, slug } = await params;
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/shop/[slug]">): Promise<Metadata> {
+  const { locale: rohesLocale, slug } = await params;
+  const locale = assertLocale(rohesLocale);
   const product = await getProduct(locale, slug);
   if (!product) return {};
 
@@ -36,8 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ProductPage({ params }: Props) {
-  const { locale, slug } = await params;
+export default async function ProductPage({ params }: PageProps<"/[locale]/shop/[slug]">) {
+  const { locale: rohesLocale, slug } = await params;
+  const locale = assertLocale(rohesLocale);
   setRequestLocale(locale);
   const product = await getProduct(locale, slug);
 
@@ -67,15 +67,25 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Section className="pt-8 pb-16">
         <Container className="flex flex-col gap-6">
-          <ProductBreadcrumbs locale={locale} brand={product.brand} name={product.name} slug={product.slug} />
+          <ProductBreadcrumbs
+            locale={locale}
+            brand={product.brand}
+            name={product.name}
+            slug={product.slug}
+          />
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <ProductGallery src={product.image.src} alt={product.image.alt} />
             <div className="flex flex-col gap-6">
               <div>
-                <p className="font-sans text-sm uppercase tracking-wide text-text-secondary">{product.brand}</p>
+                <p className="font-sans text-sm uppercase tracking-wide text-text-secondary">
+                  {product.brand}
+                </p>
                 <h1 className="text-display-md font-display text-text">{product.name}</h1>
                 <p className="mt-2 font-sans text-sm text-text-secondary">
                   {CONCENTRATION_LABELS[product.concentration]}

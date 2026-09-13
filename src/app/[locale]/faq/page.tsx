@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { assertLocale } from "@/i18n/locale";
 import { FaqSection } from "@/components/content/FaqSection";
 import { PageHeader } from "@/components/content/PageHeader";
 import { Section } from "@/components/ui/Section";
-import type { Locale } from "@/i18n/routing";
-
-type Props = { params: Promise<{ locale: Locale }> };
 
 const QUESTION_NUMBERS = [1, 2, 3, 4, 5] as const;
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
+export async function generateMetadata({ params }: PageProps<"/[locale]/faq">): Promise<Metadata> {
+  const locale = assertLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: "Faq" });
   return { title: t("title") };
 }
 
-export default async function FaqPage({ params }: Props) {
-  const { locale } = await params;
+export default async function FaqPage({ params }: PageProps<"/[locale]/faq">) {
+  const locale = assertLocale((await params).locale);
   setRequestLocale(locale);
   const t = await getTranslations("Faq");
 
@@ -32,7 +30,10 @@ export default async function FaqPage({ params }: Props) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PageHeader title={t("title")} />
       <Section>
         <FaqSection />

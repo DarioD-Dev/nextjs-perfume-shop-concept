@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { assertLocale } from "@/i18n/locale";
 import { BrandStrip } from "@/components/home/BrandStrip";
 import { CategoryTiles } from "@/components/home/CategoryTiles";
 import { EditorialSplit } from "@/components/home/EditorialSplit";
@@ -9,13 +10,10 @@ import { NewsletterSection } from "@/components/home/NewsletterSection";
 import { StoryQuote } from "@/components/home/StoryQuote";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
-import type { Locale } from "@/i18n/routing";
 import { pickMessages } from "@/lib/pickMessages";
 
-type Props = { params: Promise<{ locale: Locale }> };
-
-export default async function HomePage({ params }: Props) {
-  const { locale } = await params;
+export default async function HomePage({ params }: PageProps<"/[locale]">) {
+  const locale = assertLocale((await params).locale);
   setRequestLocale(locale);
   const t = await getTranslations("Home");
   // Footer: NewsletterForm inside NewsletterSection. Shop: ProductImageCursor's
