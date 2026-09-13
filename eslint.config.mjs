@@ -31,7 +31,8 @@ const eslintConfig = defineConfig([
       "no-restricted-syntax": [
         "error",
         {
-          selector: 'JSXOpeningElement[name.name="a"] > JSXAttribute[name.name="href"] > Literal[value=/^\\/(?!\\/)/]',
+          selector:
+            'JSXOpeningElement[name.name="a"] > JSXAttribute[name.name="href"] > Literal[value=/^\\/(?!\\/)/]',
           message:
             "Use { Link } from '@/i18n/navigation' for internal routes instead of a raw <a href=\"/...\"> — preserves locale prefix and localised pathnames.",
         },

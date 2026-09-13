@@ -1,4 +1,4 @@
-*[Diese Seite auf Deutsch](README.de.md)*
+_[Diese Seite auf Deutsch](README.de.md)_
 
 # Maison Aurelle — Niche Perfume Shop (Concept)
 
@@ -10,12 +10,12 @@ A fictional e-commerce concept for a niche fragrance boutique, built as a fully 
 
 ## Screenshots
 
-| Home (Light) | Home (Dark) |
-|---|---|
+| Home (Light)                                                              | Home (Dark)                                                             |
+| ------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | ![Homepage in light mode](docs/screenshots/en-home-desktop-lightmode.png) | ![Homepage in dark mode](docs/screenshots/en-home-desktop-darkmode.png) |
 
-| Collection (Light) | Collection (Dark) |
-|---|---|
+| Collection (Light)                                                                     | Collection (Dark)                                                                    |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | ![Collection page in light mode](docs/screenshots/en-collection-desktop-lightmode.png) | ![Collection page in dark mode](docs/screenshots/en-collection-desktop-darkmode.png) |
 
 ## Features
