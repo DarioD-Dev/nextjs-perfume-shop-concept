@@ -25,7 +25,10 @@ export const products: Product[] = [
     ],
     image: {
       src: product("maison-verrier-oud-imperial"),
-      alt: { de: "Flakon von Oud Impérial auf hellem Untergrund", en: "Oud Impérial bottle on a light surface" },
+      alt: {
+        de: "Flakon von Oud Impérial auf hellem Untergrund",
+        en: "Oud Impérial bottle on a light surface",
+      },
     },
     notes: {
       top: { de: ["Safran", "Bergamotte"], en: ["Saffron", "Bergamot"] },
@@ -55,7 +58,10 @@ export const products: Product[] = [
     ],
     image: {
       src: product("maison-verrier-fleur-nocturne"),
-      alt: { de: "Flakon von Fleur Nocturne in rosa Licht", en: "Fleur Nocturne bottle in pink light" },
+      alt: {
+        de: "Flakon von Fleur Nocturne in rosa Licht",
+        en: "Fleur Nocturne bottle in pink light",
+      },
     },
     notes: {
       top: { de: ["Bergamotte", "Pfirsich"], en: ["Bergamot", "Peach"] },
@@ -119,7 +125,10 @@ export const products: Product[] = [
       heart: { de: ["Geranie", "Salbei"], en: ["Geranium", "Sage"] },
       base: { de: ["Vetiver", "Zedernholz"], en: ["Vetiver", "Cedarwood"] },
     },
-    tagline: { de: "Frisches Neroli trifft auf erdiges Vetiver.", en: "Fresh neroli meets earthy vetiver." },
+    tagline: {
+      de: "Frisches Neroli trifft auf erdiges Vetiver.",
+      en: "Fresh neroli meets earthy vetiver.",
+    },
     description: {
       de: "Neroli Sauvage ist ein luftiger, grüner Duft für den Tag: spritzige Zitrusnoten, ein Herz aus Kräutern, ein erdiges Fundament aus Vetiver. Klar, unkompliziert, vielseitig.",
       en: "Neroli Sauvage is an airy, green fragrance for daytime wear: zesty citrus, an herbal heart, an earthy vetiver base. Clear, uncomplicated, versatile.",
@@ -146,7 +155,10 @@ export const products: Product[] = [
       heart: { de: ["Leder", "Vetiver"], en: ["Leather", "Vetiver"] },
       base: { de: ["Patschuli", "Moschus"], en: ["Patchouli", "Musk"] },
     },
-    tagline: { de: "Raues Leder, geglättet von Vetiver.", en: "Rugged leather, smoothed by vetiver." },
+    tagline: {
+      de: "Raues Leder, geglättet von Vetiver.",
+      en: "Rugged leather, smoothed by vetiver.",
+    },
     description: {
       de: "Cuir Vétiver verbindet den rauchigen Charakter von Leder mit der Frische von Vetiver. Ein Duft mit Charakter — für alle, die dezente Auffälligkeit schätzen.",
       en: "Cuir Vétiver pairs the smoky character of leather with the freshness of vetiver. A fragrance with character — for those who appreciate understated presence.",
@@ -227,7 +239,10 @@ export const products: Product[] = [
       heart: { de: ["Iris", "Veilchen"], en: ["Iris", "Violet"] },
       base: { de: ["Moschus", "Zedernholz"], en: ["Musk", "Cedarwood"] },
     },
-    tagline: { de: "Eine durchwachte Nacht in Puder und Veilchen.", en: "A sleepless night in powder and violet." },
+    tagline: {
+      de: "Eine durchwachte Nacht in Puder und Veilchen.",
+      en: "A sleepless night in powder and violet.",
+    },
     description: {
       de: "Nuit Blanche ist samtig und pudrig zugleich: Iris und Veilchen treffen auf einen sanften Moschus-Abgang. Ein Duft für lange Abende.",
       en: "Nuit Blanche is velvety and powdery at once: iris and violet meet a soft musk drydown. A fragrance for long evenings.",
@@ -247,14 +262,20 @@ export const products: Product[] = [
     ],
     image: {
       src: product("rive-nocturne-bergamote-sauvage"),
-      alt: { de: "Parfümflakon vor dunklem Hintergrund", en: "Fragrance bottle against a dark background" },
+      alt: {
+        de: "Parfümflakon vor dunklem Hintergrund",
+        en: "Fragrance bottle against a dark background",
+      },
     },
     notes: {
       top: { de: ["Bergamotte", "Zitrone"], en: ["Bergamot", "Lemon"] },
       heart: { de: ["Lavendel", "Rosmarin"], en: ["Lavender", "Rosemary"] },
       base: { de: ["Moschus", "Eichenmoos"], en: ["Musk", "Oakmoss"] },
     },
-    tagline: { de: "Mediterrane Frische bei Sonnenuntergang.", en: "Mediterranean freshness at sunset." },
+    tagline: {
+      de: "Mediterrane Frische bei Sonnenuntergang.",
+      en: "Mediterranean freshness at sunset.",
+    },
     description: {
       de: "Bergamote Sauvage fängt den Duft eines Abends an der Küste ein: herbe Zitrusfrische, ein Hauch Kräuter, ein moosig-warmer Abgang.",
       en: "Bergamote Sauvage captures the scent of an evening by the coast: tart citrus freshness, a touch of herbs, a mossy, warm drydown.",
@@ -301,14 +322,20 @@ export const products: Product[] = [
     ],
     image: {
       src: product("ombre-cuir-santal-fume"),
-      alt: { de: "Klarglasflasche mit silbernem Deckel", en: "Clear glass bottle with a silver cap" },
+      alt: {
+        de: "Klarglasflasche mit silbernem Deckel",
+        en: "Clear glass bottle with a silver cap",
+      },
     },
     notes: {
       top: { de: ["Bergamotte", "rosa Pfeffer"], en: ["Bergamot", "Pink Pepper"] },
       heart: { de: ["Sandelholz", "Rauch"], en: ["Sandalwood", "Smoke"] },
       base: { de: ["Leder", "Vanille"], en: ["Leather", "Vanilla"] },
     },
-    tagline: { de: "Rauchiges Sandelholz, veredelt mit Leder.", en: "Smoky sandalwood, refined with leather." },
+    tagline: {
+      de: "Rauchiges Sandelholz, veredelt mit Leder.",
+      en: "Smoky sandalwood, refined with leather.",
+    },
     description: {
       de: "Santal Fumé verbindet cremiges Sandelholz mit einer rauchigen Facette und einem weichen Leder-Fundament. Intensiv, aber nie schwer.",
       en: "Santal Fumé blends creamy sandalwood with a smoky facet and a soft leather base. Intense, yet never heavy.",

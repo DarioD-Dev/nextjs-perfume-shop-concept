@@ -29,7 +29,8 @@ export function ContactForm() {
   // Every "error" status today comes from zod, which always sets at least one
   // fieldErrors entry — this only fires for a hypothetical future failure
   // (e.g. a network/server error) that isn't tied to a specific field.
-  const hasUnattributedError = state.status === "error" && !nameInvalid && !emailInvalid && !messageInvalid;
+  const hasUnattributedError =
+    state.status === "error" && !nameInvalid && !emailInvalid && !messageInvalid;
 
   return (
     <form action={formAction} className="flex flex-col gap-4">

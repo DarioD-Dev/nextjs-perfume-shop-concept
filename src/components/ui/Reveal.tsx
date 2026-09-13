@@ -66,6 +66,8 @@ export function Reveal({
     <div
       ref={ref}
       className={cn("reveal", className)}
+      // Cast bleibt: React.CSSProperties kennt keine CSS-Variablen als
+      // Schlüssel. Bekannte Lücke im Typ, kein Zweifelsfall.
       style={{ "--reveal-from": HIDDEN_TRANSFORM[direction] } as React.CSSProperties}
     >
       {children}

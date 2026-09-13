@@ -13,7 +13,9 @@ export async function StoryQuote() {
         <blockquote className="max-w-2xl text-2xl font-display font-light italic text-text sm:text-3xl">
           {t("quote")}
         </blockquote>
-        <p className="font-sans text-sm uppercase tracking-wide text-text-secondary">{t("quoteAttribution")}</p>
+        <p className="font-sans text-sm uppercase tracking-wide text-text-secondary">
+          {t("quoteAttribution")}
+        </p>
       </Container>
     </Section>
   );

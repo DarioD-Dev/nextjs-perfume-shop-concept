@@ -26,10 +26,18 @@ export function EditorialSplit({
         )}
       >
         <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-          <Image src={image} alt={alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            className="object-cover"
+          />
         </div>
         <div className="flex flex-col gap-4">
-          <p className="text-eyebrow font-sans uppercase tracking-[0.18em] text-text-secondary">{eyebrow}</p>
+          <p className="text-eyebrow font-sans uppercase tracking-[0.18em] text-text-secondary">
+            {eyebrow}
+          </p>
           <h2 className="text-3xl font-display font-light text-text sm:text-4xl">{title}</h2>
           <p className="font-sans text-base leading-relaxed text-text-secondary">{body}</p>
         </div>

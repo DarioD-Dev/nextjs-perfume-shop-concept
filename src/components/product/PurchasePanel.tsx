@@ -27,7 +27,9 @@ export function PurchasePanel({
       <p className="font-sans text-2xl text-text">{formatPrice(selected.priceEur, locale)}</p>
 
       <div>
-        <p className="mb-2 font-sans text-xs uppercase tracking-wide text-text-secondary">{t("size")}</p>
+        <p className="mb-2 font-sans text-xs uppercase tracking-wide text-text-secondary">
+          {t("size")}
+        </p>
         <div className="flex gap-2">
           {sizes.map((size) => {
             const active = size.ml === selected.ml;

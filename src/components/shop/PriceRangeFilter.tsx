@@ -47,7 +47,8 @@ export function PriceRangeFilter({ priceRange }: { priceRange: PriceRange }) {
   useEffect(() => {
     if (!open) return;
     function onPointerDown(event: PointerEvent) {
-      if (!rootRef.current?.contains(event.target as Node)) setOpen(false);
+      if (!(event.target instanceof Node) || !rootRef.current?.contains(event.target))
+        setOpen(false);
     }
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);
@@ -106,7 +107,11 @@ export function PriceRangeFilter({ priceRange }: { priceRange: PriceRange }) {
         )}
       >
         {isActive ? `${formatPrice(min, locale)} – ${formatPrice(max, locale)}` : t("filterPrice")}
-        <ChevronDown size={14} strokeWidth={1.5} className={cn("transition-transform", open && "rotate-180")} />
+        <ChevronDown
+          size={14}
+          strokeWidth={1.5}
+          className={cn("transition-transform", open && "rotate-180")}
+        />
       </button>
 
       {open && (

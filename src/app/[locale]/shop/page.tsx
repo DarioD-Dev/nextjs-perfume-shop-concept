@@ -27,15 +27,15 @@ const SORT_VALUES = ["price-asc", "price-desc", "newest"] as const;
 const SEASON_VALUES = ["spring", "summer", "autumn", "winter"] as const;
 
 function isSortValue(value: string | undefined): value is ProductFilters["sort"] {
-  return SORT_VALUES.includes(value as (typeof SORT_VALUES)[number]);
+  return value !== undefined && (SORT_VALUES as readonly string[]).includes(value);
 }
 
 function isSeasonValue(value: string | undefined): value is Season {
-  return SEASON_VALUES.includes(value as (typeof SEASON_VALUES)[number]);
+  return value !== undefined && (SEASON_VALUES as readonly string[]).includes(value);
 }
 
 function isConcentrationValue(value: string | undefined): value is Product["concentration"] {
-  return CONCENTRATION_ORDER.includes(value as Product["concentration"]);
+  return value !== undefined && (CONCENTRATION_ORDER as readonly string[]).includes(value);
 }
 
 function toNumber(value: string | undefined): number | undefined {

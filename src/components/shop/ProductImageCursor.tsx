@@ -11,7 +11,13 @@ import { cn } from "@/lib/cn";
 // movement would be wasteful. Visibility/scale are pure CSS (group-hover),
 // no JS needed for that part. Mouse-only by nature: touch devices never
 // fire mousemove, so this simply does nothing there.
-export function ProductImageCursor({ children, className }: { children: ReactNode; className?: string }) {
+export function ProductImageCursor({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const pillRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("Shop");
@@ -25,7 +31,11 @@ export function ProductImageCursor({ children, className }: { children: ReactNod
   }
 
   return (
-    <div ref={containerRef} onMouseMove={handleMouseMove} className={cn("group/cursor relative cursor-none", className)}>
+    <div
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      className={cn("group/cursor relative cursor-none", className)}
+    >
       {children}
       <div
         ref={pillRef}

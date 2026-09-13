@@ -38,7 +38,10 @@ export async function Footer() {
           <div className="flex flex-wrap items-center gap-2">
             <p>© {new Date().getFullYear()} Maison Aurelle</p>
             <span aria-hidden>·</span>
-            <a href="mailto:dario.dominkovic@hotmail.com" className="transition-colors hover:text-text-on-editorial">
+            <a
+              href="mailto:dario.dominkovic@hotmail.com"
+              className="transition-colors hover:text-text-on-editorial"
+            >
               {t("credit")}
             </a>
           </div>
