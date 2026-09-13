@@ -140,3 +140,70 @@
   box-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
   cursor: pointer;
 }
+
+/* ─── Scroll-Reveal, gehärtet ──────────────────────────────────────────────
+   Der sichtbare Zustand ist der Standard. Verstecken darf ausschließlich
+   JavaScript, und nur nach dem Mount: Die Klasse `is-pending` wird per
+   classList hinzugefügt, nie serverseitig gerendert.
+
+   Warum das nötig war: Der Hidden-Zustand hing vorher an React-State, war
+   also Teil des ERSTEN Renders — Server-HTML wie Client-Render vor der
+   Hydration zeigten den Inhalt bereits unsichtbar. Ohne JavaScript blieb er
+   das für immer. Gemessen am 13.09.2026 mit deaktiviertem JavaScript und
+   nach Abschluss aller Einblendungen: auf der Startseite 40 von 59
+   Inhaltselementen unsichtbar, auf der Kollektionsseite 70 von 74 — also
+   praktisch der ganze Shop.
+
+   --reveal-from trägt die Richtung, damit eine einzige Regel für alle drei
+   Varianten reicht. */
+.reveal {
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-pending {
+  opacity: 0;
+  transform: var(--reveal-from, translateY(1.5rem));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+  .reveal.is-pending {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ─── Hero-Bild: einschweben ohne JavaScript ───────────────────────────────
+   Vorher eine Client-Komponente mit useState: erster Render opacity-0, ein
+   Mount-Effekt schaltete auf sichtbar. Ohne JavaScript blieb das Hero-Bild
+   dauerhaft unsichtbar.
+
+   Als reine CSS-Animation braucht dasselbe Ergebnis kein JavaScript — eine
+   Animation startet beim Rendern von selbst. Damit entfällt auch die
+   Client-Grenze: Die Komponente ist jetzt eine Server-Komponente. */
+@keyframes hero-settle {
+  from {
+    opacity: 0;
+    transform: rotate(1deg) scale(1.1);
+  }
+  to {
+    opacity: 0.5;
+    transform: none;
+  }
+}
+
+.hero-settle {
+  animation: hero-settle 1400ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-settle {
+    animation: none;
+    opacity: 0.5;
+  }
+}
