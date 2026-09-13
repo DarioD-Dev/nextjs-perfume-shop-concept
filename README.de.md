@@ -1,4 +1,4 @@
-*[This page in English](README.md)*
+_[This page in English](README.md)_
 
 # Maison Aurelle — Nischenparfümerie (Konzept)
 
@@ -10,12 +10,12 @@ Ein fiktives E-Commerce-Konzept für eine Nischenparfümerie, umgesetzt als voll
 
 ## Screenshots
 
-| Startseite (Light) | Startseite (Dark) |
-|---|---|
+| Startseite (Light)                                                          | Startseite (Dark)                                                         |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | ![Startseite im Light Mode](docs/screenshots/de-home-desktop-lightmode.png) | ![Startseite im Dark Mode](docs/screenshots/de-home-desktop-darkmode.png) |
 
-| Kollektion (Light) | Kollektion (Dark) |
-|---|---|
+| Kollektion (Light)                                                                      | Kollektion (Dark)                                                                     |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | ![Kollektionsseite im Light Mode](docs/screenshots/de-collection-desktop-lightmode.png) | ![Kollektionsseite im Dark Mode](docs/screenshots/de-collection-desktop-darkmode.png) |
 
 ## Funktionen
