@@ -144,6 +144,8 @@
     "paymentBankTransfer": "Sofortüberweisung"
   },
   "NotFound": {
-    "title": "Seite nicht gefunden"
+    "title": "Seite nicht gefunden",
+    "body": "Der Link ist vielleicht veraltet oder hat einen Tippfehler.",
+    "home": "Zur Startseite"
   }
 }
