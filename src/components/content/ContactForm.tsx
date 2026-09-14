@@ -17,9 +17,15 @@ export function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <p role="status" className="font-sans text-accent-gold">
-        {t("success")}
-      </p>
+      // Die Bestätigung nennt die Grenze dieser Demo ausdrücklich. Ohne den
+      // Hinweis stünde hier eine Zusage, die niemand einlöst: Ohne
+      // RESEND_API_KEY protokolliert die Server-Action nur und meldet Erfolg.
+      // Wer das Formular testet — und Interessenten tun das — würde auf eine
+      // Antwort warten, die nie kommt.
+      <div role="status">
+        <p className="font-sans text-accent-gold">{t("success")}</p>
+        <p className="mt-2 font-sans text-sm text-text-secondary">{t("demoNote")}</p>
+      </div>
     );
   }
 
