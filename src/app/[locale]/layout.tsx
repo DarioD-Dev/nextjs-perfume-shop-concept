@@ -9,6 +9,7 @@ import { Providers } from "@/components/layout/Providers";
 import { getPathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { pickMessages } from "@/lib/pickMessages";
+import { SITE_URL } from "@/lib/siteUrl";
 import { sansUi, serif } from "@/styles/fonts";
 import "@/styles/globals.css";
 
@@ -21,13 +22,34 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
   const t = await getTranslations({ locale, namespace: "Meta" });
 
   return {
+    // metadataBase fehlte: Ohne ihn bleiben alternates und das automatisch
+    // erzeugte og:image relative Pfade. Linkvorschauen brauchen absolute URLs
+    // — die Vorschau blieb dadurch auch dann leer, wenn ein Bild existierte.
+    metadataBase: new URL(SITE_URL),
     title: { default: t("title"), template: `%s — ${t("title")}` },
     description: t("description"),
     alternates: {
+      canonical: getPathname({ locale, href: "/" }),
       languages: Object.fromEntries(
         routing.locales.map((l) => [l, getPathname({ locale: l, href: "/" })]),
       ),
     },
+    // OpenGraph fehlte hier vollständig. Das Bild liefert
+    // src/app/opengraph-image.tsx und wird von Next automatisch ergänzt.
+    openGraph: {
+      type: "website",
+      siteName: t("title"),
+      title: t("title"),
+      description: t("description"),
+      locale: locale === "de" ? "de_AT" : "en_GB",
+      url: getPathname({ locale, href: "/" }),
+      // Ausdrücklich gesetzt, nicht der automatischen Ergänzung überlassen:
+      // Next ergänzt das Bild aus app/opengraph-image.tsx nur, solange keine
+      // eigene openGraph-Angabe existiert — openGraph wird ganz ersetzt statt
+      // zusammengeführt.
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630 }],
+    },
+    twitter: { card: "summary_large_image" },
     // Unsolicited pitch demo — kept out of search results until the client
     // actually commissions this. See Bauplan §9 and Footer's disclaimer line.
     robots: { index: false, follow: false },
