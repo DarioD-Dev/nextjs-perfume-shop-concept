@@ -18,9 +18,12 @@ export function NewsletterForm() {
 
   if (status === "success") {
     return (
-      <p role="status" className="font-sans text-sm text-accent-gold">
-        {t("newsletterSuccess")}
-      </p>
+      // Dieses Formular hat gar kein Backend — der Zustand wechselt rein im
+      // Browser. "Du bist angemeldet" war damit schlicht falsch.
+      <div role="status">
+        <p className="font-sans text-sm text-accent-gold">{t("newsletterSuccess")}</p>
+        <p className="mt-1 font-sans text-xs text-text-secondary">{t("newsletterDemoNote")}</p>
+      </div>
     );
   }
 
