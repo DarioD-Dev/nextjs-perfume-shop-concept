@@ -10,5 +10,5 @@ export const config = {
   // Middleware /opengraph-image auf /de/opengraph-image um — eine Route, die
   // es nicht gibt —, und Linkvorschauen bekommen statt der Karte einen
   // Umleitungs- beziehungsweise 404-Fehler.
-  matcher: ["/((?!api|trpc|_next|_vercel|opengraph-image|.*\..*).*)"],
+  matcher: ["/((?!api|trpc|_next|_vercel|opengraph-image|.*\\..*).*)"],
 };

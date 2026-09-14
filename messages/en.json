@@ -144,6 +144,8 @@
     "paymentBankTransfer": "Instant bank transfer"
   },
   "NotFound": {
-    "title": "Page not found"
+    "title": "Page not found",
+    "body": "The link may be outdated or contain a typo.",
+    "home": "Back to the homepage"
   }
 }
