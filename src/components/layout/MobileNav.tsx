@@ -14,10 +14,17 @@ export function MobileNav() {
   const t = useTranslations("Nav");
   const tHeader = useTranslations("Header");
   const panelRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!open) return;
     panelRef.current?.focus();
+
+    // Background siblings (header, main, footer) stay in the DOM behind the
+    // portalled dialog — without `inert` they're still reachable by Tab and
+    // by screen readers, despite the dialog's aria-modal="true".
+    const siblings = Array.from(document.body.children).filter((el) => el !== panelRef.current);
+    siblings.forEach((el) => el.setAttribute("inert", ""));
 
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);
@@ -27,12 +34,23 @@ export function MobileNav() {
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
+      siblings.forEach((el) => el.removeAttribute("inert"));
+      // Der Auslöser ist beim Schließen aus dem DOM verschwunden; ohne diese
+      // Rückgabe fällt der Fokus auf <body> und der nächste Tabulator beginnt
+      // wieder ganz oben auf der Seite.
+      triggerRef.current?.focus();
     };
   }, [open]);
 
   return (
     <div className="md:hidden">
-      <IconButton label={tHeader("openMenu")} onClick={() => setOpen(true)}>
+      <IconButton
+        label={tHeader("openMenu")}
+        onClick={(event) => {
+          triggerRef.current = event.currentTarget;
+          setOpen(true);
+        }}
+      >
         <Menu size={22} />
       </IconButton>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { assertLocale } from "@/i18n/locale";
 import { FaqSection } from "@/components/content/FaqSection";
@@ -9,8 +10,16 @@ const QUESTION_NUMBERS = [1, 2, 3, 4, 5] as const;
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/faq">): Promise<Metadata> {
   const locale = assertLocale((await params).locale);
-  const t = await getTranslations({ locale, namespace: "Faq" });
-  return { title: t("title") };
+  const [t, tMeta] = await Promise.all([
+    getTranslations({ locale, namespace: "Faq" }),
+    getTranslations({ locale, namespace: "Meta" }),
+  ]);
+  return buildPageMetadata({
+    title: t("title"),
+    description: tMeta("description"),
+    locale,
+    href: "/faq",
+  });
 }
 
 export default async function FaqPage({ params }: PageProps<"/[locale]/faq">) {

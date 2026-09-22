@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { assertLocale } from "@/i18n/locale";
 import { EditorialSplit } from "@/components/home/EditorialSplit";
@@ -11,7 +12,12 @@ export async function generateMetadata({
 }: PageProps<"/[locale]/about">): Promise<Metadata> {
   const locale = assertLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: "About" });
-  return { title: t("title"), description: t("body") };
+  return buildPageMetadata({
+    title: t("title"),
+    description: t("body"),
+    locale,
+    href: "/about",
+  });
 }
 
 export default async function AboutPage({ params }: PageProps<"/[locale]/about">) {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { assertLocale } from "@/i18n/locale";
@@ -60,8 +61,16 @@ function ersterWert(value: string | string[] | undefined): string | undefined {
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/shop">): Promise<Metadata> {
   const locale = assertLocale((await params).locale);
-  const t = await getTranslations({ locale, namespace: "Shop" });
-  return { title: t("title") };
+  const [t, tMeta] = await Promise.all([
+    getTranslations({ locale, namespace: "Shop" }),
+    getTranslations({ locale, namespace: "Meta" }),
+  ]);
+  return buildPageMetadata({
+    title: t("title"),
+    description: tMeta("description"),
+    locale,
+    href: "/shop",
+  });
 }
 
 export default async function ShopPage({ params, searchParams }: PageProps<"/[locale]/shop">) {

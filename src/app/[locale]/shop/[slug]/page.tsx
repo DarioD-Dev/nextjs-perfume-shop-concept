@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { getMessages, setRequestLocale } from "next-intl/server";
@@ -29,10 +30,12 @@ export async function generateMetadata({
   const product = await getProduct(locale, slug);
   if (!product) return {};
 
-  return {
+  return buildPageMetadata({
     title: `${product.brand} ${product.name}`,
     description: product.tagline,
-  };
+    locale,
+    href: { pathname: "/shop/[slug]", params: { slug } },
+  });
 }
 
 export default async function ProductPage({ params }: PageProps<"/[locale]/shop/[slug]">) {

@@ -6,9 +6,9 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Providers } from "@/components/layout/Providers";
-import { getPathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { pickMessages } from "@/lib/pickMessages";
+import { buildPageMetadata } from "@/lib/seo";
 import { SITE_URL } from "@/lib/siteUrl";
 import { sansUi, serif } from "@/styles/fonts";
 import "@/styles/globals.css";
@@ -26,33 +26,22 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     // erzeugte og:image relative Pfade. Linkvorschauen brauchen absolute URLs
     // — die Vorschau blieb dadurch auch dann leer, wenn ein Bild existierte.
     metadataBase: new URL(SITE_URL),
-    title: { default: t("title"), template: `%s — ${t("title")}` },
-    description: t("description"),
-    alternates: {
-      canonical: getPathname({ locale, href: "/" }),
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, getPathname({ locale: l, href: "/" })]),
-      ),
-    },
-    // OpenGraph fehlte hier vollständig. Das Bild liefert
-    // src/app/opengraph-image.tsx und wird von Next automatisch ergänzt.
-    openGraph: {
-      type: "website",
-      siteName: t("title"),
-      title: t("title"),
-      description: t("description"),
-      locale: locale === "de" ? "de_AT" : "en_GB",
-      url: getPathname({ locale, href: "/" }),
-      // Ausdrücklich gesetzt, nicht der automatischen Ergänzung überlassen:
-      // Next ergänzt das Bild aus app/opengraph-image.tsx nur, solange keine
-      // eigene openGraph-Angabe existiert — openGraph wird ganz ersetzt statt
-      // zusammengeführt.
-      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630 }],
-    },
-    twitter: { card: "summary_large_image" },
     // Unsolicited pitch demo — kept out of search results until the client
     // actually commissions this. See Bauplan §9 and Footer's disclaimer line.
+    //
+    // Bewusst hier und NICHT in buildPageMetadata: Den Helfer benutzen Layout
+    // und Seiten gemeinsam, und wenn beide robots setzen, gibt Next zwei
+    // Meta-Tags aus. Vom Layout aus gilt der Wert ohnehin für jede Route.
     robots: { index: false, follow: false },
+    ...buildPageMetadata({
+      title: t("title"),
+      description: t("description"),
+      locale,
+      href: "/",
+    }),
+    // Nach dem Helfer, weil nur das Layout die Vorlage trägt: Jede Unterseite
+    // setzt ihren eigenen Titel und bekommt „Titel — Maison Aurelle".
+    title: { default: t("title"), template: `%s — ${t("title")}` },
   };
 }
 
@@ -66,7 +55,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   // the only namespaces their *client* components need. Everything else is
   // picked per-page (see e.g. shop/page.tsx) so each page's RSC payload only
   // carries the translations its own client components actually use.
-  const messages = pickMessages(await getMessages(), ["Header", "Nav"]);
+  // "Error" gehört dazu, obwohl keine sichtbare Komponente des Layouts ihn
+  // braucht: app/[locale]/error.tsx ist eine Client-Komponente und rendert
+  // innerhalb dieses Providers. Fehlte der Namespace, zeigte die Fehlerseite
+  // selbst einen Fehler (MISSING_MESSAGE) — ausgerechnet dort.
+  const messages = pickMessages(await getMessages(), ["Header", "Nav", "Error"]);
   const t = await getTranslations({ locale, namespace: "Header" });
 
   return (
@@ -94,10 +87,14 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
 
                 Serverseitig gerendert: Der Text kommt über getTranslations
                 statt über den Client-Provider, kostet also kein zusätzliches
-                JavaScript. Unsichtbar bis zum Fokus. */}
+                JavaScript. Unsichtbar bis zum Fokus.
+
+                Über dem Sichtfeld geparkt und bei Fokus eingeschoben, nicht
+                sr-only + not-sr-only: not-sr-only setzt das Padding auf 0 und
+                drückt den Link genau dann flach, wenn er erscheint. */}
             <a
               href="#inhalt"
-              className="sr-only rounded-full bg-accent-copper px-5 py-2.5 font-sans text-sm font-medium text-text-on-editorial focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50"
+              className="absolute top-4 left-4 z-50 -translate-y-24 rounded-full bg-accent-gold px-5 py-2.5 font-sans text-sm font-medium text-text-on-accent transition-transform focus:translate-y-0"
             >
               {t("skipToContent")}
             </a>

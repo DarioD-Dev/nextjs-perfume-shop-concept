@@ -39,6 +39,25 @@ const eslintConfig = defineConfig([
       ],
     },
   },
+  {
+    // Außerhalb von [locale] gibt es weder Sprache noch Pfadtabelle: Diese
+    // beiden Dateien rendern ohne das Locale-Layout — die eine, wenn eine
+    // Adresse gar keine Sprache enthält, die andere, wenn das Wurzel-Layout
+    // selbst scheitert. Dort ist next/link beziehungsweise ein rohes
+    // <a href="/"> nicht der Fehler, sondern die einzige richtige Antwort:
+    // "/" lässt die Middleware die Sprache verhandeln, sobald sie wieder läuft.
+    files: ["src/app/not-found.tsx", "src/app/global-error.tsx"],
+    rules: {
+      "no-restricted-imports": "off",
+      "no-restricted-syntax": "off",
+      // Und hier ist der harte Seitenaufruf ausdrücklich gewollt, nicht
+      // geduldet: global-error.tsx greift, wenn das Wurzel-Layout beim
+      // Rendern gescheitert ist. Ein <Link> würde weich navigieren und dabei
+      // genau den Router benutzen, der womöglich das Problem ist. Ein echter
+      // Seitenaufruf lädt alles neu — Middleware, Layout, Sprache.
+      "@next/next/no-html-link-for-pages": "off",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

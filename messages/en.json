@@ -147,5 +147,11 @@
     "title": "Page not found",
     "body": "The link may be outdated or contain a typo.",
     "home": "Back to the homepage"
+  },
+  "Error": {
+    "title": "Something went wrong.",
+    "body": "This page could not be loaded just now. Trying again often does the trick.",
+    "retry": "Try again",
+    "home": "Back to home"
   }
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { FieldError } from "@/components/ui/FieldError";
 import { Input } from "@/components/ui/Input";
@@ -14,6 +14,15 @@ const initialState: ContactFormState = { status: "idle" };
 export function ContactForm() {
   const t = useTranslations("Contact");
   const [state, formAction, pending] = useActionState(submitContactForm, initialState);
+  const successRef = useRef<HTMLDivElement>(null);
+
+  // Bei Erfolg ersetzt die Bestätigung das Formular. role="status" meldet sie,
+  // aber der Tastaturfokus stand auf einem Absendeknopf, den es nicht mehr
+  // gibt — er fiel auf <body> zurück, und der nächste Tabulator begann wieder
+  // ganz oben. Der Fokus auf die Bestätigung hält die Position.
+  useEffect(() => {
+    if (state.status === "success") successRef.current?.focus();
+  }, [state.status]);
 
   if (state.status === "success") {
     return (
@@ -22,7 +31,7 @@ export function ContactForm() {
       // RESEND_API_KEY protokolliert die Server-Action nur und meldet Erfolg.
       // Wer das Formular testet — und Interessenten tun das — würde auf eine
       // Antwort warten, die nie kommt.
-      <div role="status">
+      <div ref={successRef} tabIndex={-1} role="status" className="outline-none">
         <p className="font-sans text-accent-gold">{t("success")}</p>
         <p className="mt-2 font-sans text-sm text-text-secondary">{t("demoNote")}</p>
       </div>

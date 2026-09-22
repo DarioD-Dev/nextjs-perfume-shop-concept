@@ -147,5 +147,11 @@
     "title": "Seite nicht gefunden",
     "body": "Der Link ist vielleicht veraltet oder hat einen Tippfehler.",
     "home": "Zur Startseite"
+  },
+  "Error": {
+    "title": "Etwas ist schiefgelaufen.",
+    "body": "Diese Seite konnte gerade nicht geladen werden. Ein neuer Versuch hilft oft schon.",
+    "retry": "Erneut versuchen",
+    "home": "Zur Startseite"
   }
 }
