@@ -20,7 +20,7 @@ const SITE_NAME = "Maison Aurelle";
 // Codes der Seite sind es nicht. Klein genug für eine literale Tabelle — und
 // sie bricht den Build, wenn eine Sprache dazukommt, ohne dass jemand
 // entschieden hat, worauf sie abgebildet wird.
-const OG_LOCALES: Record<Locale, string> = { de: "de_AT", en: "en_GB" };
+const OG_LOCALES: Record<Locale, string> = { de: "de_AT", en: "en_GB", hr: "hr_HR" };
 
 /**
  * Die Metadaten jeder Seite entstehen hier, statt in jeder Route von Hand.

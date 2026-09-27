@@ -17,7 +17,7 @@
     "skipToContent": "Zum Inhalt springen",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
-    "switchLanguageTo": "Sprache wechseln zu {locale}",
+    "language": "Sprache",
     "themeToggleToLight": "Zu hellem Modus wechseln",
     "themeToggleToDark": "Zu dunklem Modus wechseln"
   },
@@ -89,6 +89,7 @@
     "shippingBody": "Versand innerhalb Österreichs in 2–3 Werktagen, ab € 100 Bestellwert versandkostenfrei. (Demo — kein echter Versand.)",
     "returnsTitle": "Rückgabe",
     "returnsBody": "Rückgabe innerhalb von 14 Tagen bei ungeöffneter Ware möglich. (Demo — kein echtes Rückgaberecht.)",
+    "breadcrumb": "Breadcrumb-Navigation",
     "related": "Das könnte dir auch gefallen"
   },
   "About": {

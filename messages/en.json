@@ -17,7 +17,7 @@
     "skipToContent": "Skip to content",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
-    "switchLanguageTo": "Switch language to {locale}",
+    "language": "Language",
     "themeToggleToLight": "Switch to light mode",
     "themeToggleToDark": "Switch to dark mode"
   },
@@ -89,6 +89,7 @@
     "shippingBody": "Shipping within Austria in 2–3 business days, free from € 100. (Demo — no real shipping.)",
     "returnsTitle": "Returns",
     "returnsBody": "Returns accepted within 14 days for unopened items. (Demo — no real return policy.)",
+    "breadcrumb": "Breadcrumb",
     "related": "You might also like"
   },
   "About": {

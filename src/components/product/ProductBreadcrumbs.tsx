@@ -14,6 +14,7 @@ export async function ProductBreadcrumbs({
   slug: string;
 }) {
   const tNav = await getTranslations("Nav");
+  const tProduct = await getTranslations("Product");
 
   const items = [
     { label: tNav("home"), url: getPathname({ locale, href: "/" }) },
@@ -37,7 +38,9 @@ export async function ProductBreadcrumbs({
 
   return (
     <nav
-      aria-label="Breadcrumb"
+      // Stand vor dem 27.09.2026 hartkodiert englisch — auch auf der
+      // deutschen Seite. Ein zugänglicher Name gehört in die Übersetzungen.
+      aria-label={tProduct("breadcrumb")}
       className="font-sans text-xs uppercase tracking-wide text-text-secondary"
     >
       <script

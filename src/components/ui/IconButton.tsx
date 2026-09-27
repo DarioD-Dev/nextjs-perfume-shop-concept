@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 export function IconButton({
@@ -6,7 +6,7 @@ export function IconButton({
   className,
   label,
   ...props
-}: ButtonHTMLAttributes<HTMLButtonElement> & { children: ReactNode; label: string }) {
+}: ComponentPropsWithRef<"button"> & { children: ReactNode; label: string }) {
   return (
     <button
       aria-label={label}
