@@ -17,6 +17,7 @@
     "skipToContent": "Prijeđi na sadržaj",
     "openMenu": "Otvori izbornik",
     "closeMenu": "Zatvori izbornik",
+    "menuTitle": "Navigacija",
     "language": "Jezik",
     "themeToggleToLight": "Prebaci na svijetlu temu",
     "themeToggleToDark": "Prebaci na tamnu temu"
@@ -116,6 +117,7 @@
     "demoNote": "Konceptna studija: e-mail se ne šalje i nitko vam se neće javiti.",
     "error": "Provjerite unesene podatke i pokušajte ponovno.",
     "addressLabel": "Adresa",
+    "addressValue": "Beč, Austrija",
     "mapTitle": "Lokacija na Google Maps",
     "mapNotice": "Učitavanjem karte podaci se šalju Googleu.",
     "mapLoad": "Učitajte kartu"

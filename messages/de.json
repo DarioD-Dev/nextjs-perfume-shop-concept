@@ -17,6 +17,7 @@
     "skipToContent": "Zum Inhalt springen",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
+    "menuTitle": "Navigation",
     "language": "Sprache",
     "themeToggleToLight": "Zu hellem Modus wechseln",
     "themeToggleToDark": "Zu dunklem Modus wechseln"
@@ -116,6 +117,7 @@
     "demoNote": "Konzeptstudie: Es wird keine E-Mail versendet und niemand meldet sich zurück.",
     "error": "Bitte überprüfe deine Eingaben und versuche es erneut.",
     "addressLabel": "Adresse",
+    "addressValue": "Wien, Österreich",
     "mapTitle": "Standort auf Google Maps",
     "mapNotice": "Beim Laden der Karte werden Daten an Google übertragen.",
     "mapLoad": "Karte laden"

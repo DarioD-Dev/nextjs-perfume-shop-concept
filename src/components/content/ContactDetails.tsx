@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import { Rule } from "@/components/ui/Rule";
-import { CONTACT_ADDRESS } from "./ContactMap";
 
 export async function ContactDetails() {
   const t = await getTranslations("Contact");
@@ -12,7 +11,7 @@ export async function ContactDetails() {
           {t("addressLabel")}
         </p>
         <p className="font-display text-lg text-text">Dario Dominkovic</p>
-        <p className="font-sans text-text-secondary">{CONTACT_ADDRESS}</p>
+        <p className="font-sans text-text-secondary">{t("addressValue")}</p>
       </div>
       <Rule className="w-12 opacity-50" />
       <div>

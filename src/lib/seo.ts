@@ -3,6 +3,17 @@ import { getPathname } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/siteUrl";
 
+/**
+ * Der Alternativtext des Vorschaubilds — an einer Stelle, weil ihn zwei
+ * Module brauchen: `app/opengraph-image.tsx` exportiert ihn als `alt`, und
+ * das `images`-Objekt der Linkvorschau muss ihn am Bild mitgeben. Next
+ * ergänzt das Datei-Metadatum nämlich NUR, solange keine eigene
+ * `openGraph.images`-Angabe existiert — und die steht hier aus gutem Grund.
+ * Ohne diese Zusammenführung bleibt der Export wirkungslos und og:image:alt
+ * leer.
+ */
+export const OG_IMAGE_ALT = "Maison Aurelle — Parfums d'Exception, Wien";
+
 /** Die internen Routenschlüssel aus `routing.pathnames` — "/", "/shop", "/shop/[slug]", … */
 export type Href = Parameters<typeof getPathname>[0]["href"];
 
@@ -68,7 +79,7 @@ export function buildPageMetadata({
       // Next ergänzt das Bild aus app/opengraph-image.tsx nur, solange keine
       // eigene openGraph-Angabe existiert — und die wird ersetzt statt
       // zusammengeführt. Ohne diese Zeile bliebe die Vorschau bildlos.
-      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630 }],
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: OG_IMAGE_ALT }],
     },
     twitter: { card: "summary_large_image" },
   };

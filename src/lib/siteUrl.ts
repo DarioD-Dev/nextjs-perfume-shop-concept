@@ -6,4 +6,5 @@
 // und dort hatte er monatelang auf eine Domain gezeigt, die nie existiert hat
 // — jeder Eintrag der veröffentlichten Sitemap war ein toter Link. Sobald
 // zwei Dateien denselben Ursprung brauchen, gehört er in eine.
-export const SITE_URL = "https://nextjs-perfume-shop-concept.vercel.app";
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://nextjs-perfume-shop-concept.vercel.app";

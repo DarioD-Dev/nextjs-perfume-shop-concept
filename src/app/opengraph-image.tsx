@@ -1,10 +1,11 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { OG_IMAGE_ALT } from "@/lib/seo";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Maison Aurelle — Parfums d'Exception, Wien";
+export const alt = OG_IMAGE_ALT;
 
 // Statische, sprachneutrale Karte (Linkvorschauen verhandeln praktisch nie
 // die Sprache) aus derselben Palette wie die Seite. Kein eigenes

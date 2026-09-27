@@ -66,6 +66,10 @@ export function MobileNav() {
             tabIndex={-1}
             role="dialog"
             aria-modal="true"
+            // Ein Dialog ohne zugänglichen Namen wird nur als „Dialog"
+            // angesagt — wer ihn per Screenreader öffnet, erfährt nicht, was
+            // aufgegangen ist.
+            aria-label={tHeader("menuTitle")}
             className="fixed inset-0 z-50 flex flex-col bg-surface outline-none"
           >
             <div className="flex items-center justify-between p-6">

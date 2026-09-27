@@ -5,7 +5,10 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 
-export const CONTACT_ADDRESS = "Wien, Österreich";
+// Nur noch die Ortsangabe für die Maps-Abfrage. Der angezeigte Ort steht in
+// messages/ (Contact.addressValue) — gegenüber Google ist das hier keine
+// Übersetzung, sondern ein Suchbegriff, und der bleibt deutsch.
+const CONTACT_ADDRESS = "Wien, Österreich";
 
 const MAPS_EMBED_SRC = `https://www.google.com/maps?q=${encodeURIComponent(CONTACT_ADDRESS)}&output=embed`;
 
