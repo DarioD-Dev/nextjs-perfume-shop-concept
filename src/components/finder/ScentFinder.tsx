@@ -2,17 +2,21 @@
 
 import {
   ArrowLeft,
+  Citrus,
   Coffee,
   Coins,
+  Flame,
+  Flower,
+  Flower2,
   Gem,
   Leaf,
   PartyPopper,
   RotateCcw,
   Snowflake,
   Sun,
+  TreeDeciduous,
   Wallet,
 } from "lucide-react";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useState, type ComponentType } from "react";
 import { ProductCard } from "@/components/shop/ProductCard";
@@ -32,16 +36,11 @@ const PROFILE_LABEL_KEYS = {
   holzig: "profileHolzig",
   orientalisch: "profileOrientalisch",
 } as const;
-// Echte Flakon-Fotos statt Icons — ein Satz Icon-Kacheln sah für den
-// wichtigsten Schritt zu mager aus, und erfundene Stimmungsbilder hätten dem
-// Projekt widersprochen ("nichts vortäuschen"). Je ein tatsächliches Produkt
-// der Kollektion, eines pro Charakter — dieselbe Auswahl wie im
-// Portfolio-Vorgeschmack.
-const PROFILE_IMAGES = {
-  frisch: "/images/products/atelier-solane-neroli-sauvage.jpg",
-  blumig: "/images/products/maison-verrier-fleur-nocturne.jpg",
-  holzig: "/images/products/casa-brunelli-cuir-vetiver.jpg",
-  orientalisch: "/images/products/maison-verrier-oud-imperial.jpg",
+const PROFILE_ICONS = {
+  frisch: Citrus,
+  blumig: Flower,
+  holzig: TreeDeciduous,
+  orientalisch: Flame,
 } as const;
 
 const SEASONS = ["spring", "summer", "autumn", "winter"] as const;
@@ -51,9 +50,7 @@ const SEASON_LABEL_KEYS = {
   autumn: "seasonAutumn",
   winter: "seasonWinter",
 } as const;
-// Flower2 wird hier bewusst nicht mehr gebraucht — "Frühling" bekommt sein
-// eigenes Blatt-Icon, der Blumen-Charakter oben hat jetzt ein echtes Foto.
-const SEASON_ICONS = { spring: Leaf, summer: Sun, autumn: Leaf, winter: Snowflake } as const;
+const SEASON_ICONS = { spring: Flower2, summer: Sun, autumn: Leaf, winter: Snowflake } as const;
 
 const OCCASIONS = ["alltag", "besonders"] as const;
 const OCCASION_LABEL_KEYS = { alltag: "occasionAlltag", besonders: "occasionBesonders" } as const;
@@ -173,32 +170,14 @@ export function ScentFinder({ locale }: { locale: Locale }) {
           <h2 className="font-display text-3xl font-light text-text sm:text-4xl">
             {t("questionProfile")}
           </h2>
-          <div className="grid w-full max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5">
+          <div className="grid w-full max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4">
             {PROFILES.map((value) => (
-              <button
+              <OptionCard
                 key={value}
-                type="button"
+                icon={PROFILE_ICONS[value]}
+                label={t(PROFILE_LABEL_KEYS[value])}
                 onClick={() => setProfile(value)}
-                className="group relative aspect-4/5 overflow-hidden rounded-xl"
-              >
-                <Image
-                  src={PROFILE_IMAGES[value]}
-                  alt=""
-                  fill
-                  sizes="(min-width: 1024px) 22vw, 42vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-surface-editorial/35 transition-colors duration-300 group-hover:bg-surface-editorial/50" />
-                <div className="absolute inset-x-0 bottom-0 flex flex-col items-center gap-2 pb-5">
-                  <span
-                    aria-hidden
-                    className="h-px w-6 origin-center scale-x-0 bg-accent-gold transition-transform duration-300 group-hover:scale-x-100"
-                  />
-                  <span className="font-sans text-xs uppercase tracking-wide text-text-on-editorial sm:text-sm">
-                    {t(PROFILE_LABEL_KEYS[value])}
-                  </span>
-                </div>
-              </button>
+              />
             ))}
           </div>
         </>
