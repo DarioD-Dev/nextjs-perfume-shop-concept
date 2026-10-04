@@ -199,7 +199,11 @@ export function CollectionFilters({
             className="w-full rounded-full border-border-strong py-2 pr-4 pl-9 text-sm"
           />
         </div>
-        <div className="flex gap-2">
+        {/* flex-wrap: Bei 320px passten „Damen · Herren · Unisex" und erst recht
+            „Žene · Muškarci · Unisex" nicht in eine Zeile, und die Gruppe schob
+            die ganze Seite 16px über den Rand. Ein aktiver Chip wird durch das
+            X noch breiter. */}
+        <div className="flex flex-wrap gap-2">
           {CATEGORIES.map((category) => {
             const active = searchParams.get("category") === category;
             const Icon = CATEGORY_ICONS[category];
