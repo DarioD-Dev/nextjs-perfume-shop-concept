@@ -6,6 +6,7 @@
   "Nav": {
     "home": "Početna",
     "shop": "Kolekcija",
+    "finder": "Pronalazač mirisa",
     "about": "O nama",
     "contact": "Kontakt",
     "faq": "FAQ"
@@ -145,6 +146,35 @@
     "credit": "Izradio Dario Dominkovic",
     "paymentCreditCard": "Kreditna kartica",
     "paymentBankTransfer": "Sofortüberweisung"
+  },
+  "Finder": {
+    "metaTitle": "Pronalazač mirisa",
+    "metaDescription": "Četiri kratka pitanja, jedan odgovarajući miris iz naše kolekcije.",
+    "title": "Pronađite svoj miris",
+    "intro": "Četiri kratka pitanja — na kraju vas čeka miris iz naše kolekcije koji vam odgovara.",
+    "stepOf": "Pitanje {step} od {total}",
+    "questionSeason": "U koje godišnje doba ga najradije nosite?",
+    "questionProfile": "Koji karakter vam se sviđa?",
+    "profileFrisch": "Svježe i lagano",
+    "profileBlumig": "Cvjetno",
+    "profileHolzig": "Drvenasto i izraženo",
+    "profileOrientalisch": "Toplo i orijentalno",
+    "questionOccasion": "Za svaki dan ili za posebnu prigodu?",
+    "occasionAlltag": "Svaki dan",
+    "occasionBesonders": "Posebna prigoda",
+    "questionBudget": "Koji cjenovni razred?",
+    "budgetTief": "Do 140 €",
+    "budgetMittel": "140–200 €",
+    "budgetHoch": "Preko 200 €",
+    "back": "Natrag",
+    "resultEyebrow": "Ovo vam odgovara",
+    "resultNote": "Na temelju vašeg odabira — iz naše trenutačne kolekcije.",
+    "resultNotesTitle": "Mirisne note",
+    "viewProduct": "Pogledajte miris",
+    "restart": "Pokušajte ponovno",
+    "teaserTitle": "Još niste sigurni?",
+    "teaserBody": "Četiri kratka pitanja vode vas do odgovarajućeg mirisa iz naše kolekcije.",
+    "teaserCta": "Pokrenite pronalazač mirisa"
   },
   "NotFound": {
     "title": "Stranica nije pronađena",

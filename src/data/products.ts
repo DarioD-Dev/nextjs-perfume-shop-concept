@@ -18,6 +18,7 @@ export const products: Product[] = [
     name: "Oud Impérial",
     concentration: "Extrait",
     category: "unisex",
+    profile: "orientalisch",
     season: ["autumn", "winter"],
     sizes: [
       { ml: 30, priceEur: 255 },
@@ -58,6 +59,7 @@ export const products: Product[] = [
     name: "Fleur Nocturne",
     concentration: "EdP",
     category: "damen",
+    profile: "blumig",
     season: ["summer", "autumn"],
     sizes: [
       { ml: 50, priceEur: 145 },
@@ -106,6 +108,7 @@ export const products: Product[] = [
     name: "Ambre Doré",
     concentration: "EdP",
     category: "unisex",
+    profile: "orientalisch",
     season: ["autumn", "winter"],
     sizes: [
       { ml: 50, priceEur: 138 },
@@ -150,6 +153,7 @@ export const products: Product[] = [
     name: "Neroli Sauvage",
     concentration: "EdT",
     category: "herren",
+    profile: "frisch",
     season: ["spring", "summer"],
     sizes: [
       { ml: 50, priceEur: 98 },
@@ -190,6 +194,7 @@ export const products: Product[] = [
     name: "Cuir Vétiver",
     concentration: "EdP",
     category: "herren",
+    profile: "holzig",
     season: ["autumn", "winter"],
     sizes: [
       { ml: 50, priceEur: 148 },
@@ -230,6 +235,7 @@ export const products: Product[] = [
     name: "Rosa Selvaggia",
     concentration: "Parfum",
     category: "damen",
+    profile: "blumig",
     season: ["spring", "summer"],
     sizes: [
       { ml: 50, priceEur: 198 },
@@ -278,6 +284,7 @@ export const products: Product[] = [
     name: "Ambre Absolu",
     concentration: "Extrait",
     category: "unisex",
+    profile: "orientalisch",
     season: ["autumn", "winter"],
     sizes: [
       { ml: 30, priceEur: 262 },
@@ -318,6 +325,7 @@ export const products: Product[] = [
     name: "Nuit Blanche",
     concentration: "EdP",
     category: "damen",
+    profile: "holzig",
     season: ["autumn", "winter"],
     sizes: [
       { ml: 50, priceEur: 142 },
@@ -362,6 +370,7 @@ export const products: Product[] = [
     name: "Bergamote Sauvage",
     concentration: "EdC",
     category: "herren",
+    profile: "frisch",
     season: ["spring", "summer"],
     sizes: [
       { ml: 50, priceEur: 96 },
@@ -406,6 +415,7 @@ export const products: Product[] = [
     name: "Iris Nocturne",
     concentration: "EdP",
     category: "unisex",
+    profile: "holzig",
     season: ["autumn", "winter"],
     sizes: [
       { ml: 50, priceEur: 152 },
@@ -450,6 +460,7 @@ export const products: Product[] = [
     name: "Santal Fumé",
     concentration: "Extrait",
     category: "herren",
+    profile: "holzig",
     season: ["autumn", "winter"],
     sizes: [
       { ml: 30, priceEur: 258 },
@@ -494,6 +505,7 @@ export const products: Product[] = [
     name: "Musc Blanc",
     concentration: "EdP",
     category: "damen",
+    profile: "frisch",
     season: ["spring", "summer"],
     sizes: [
       { ml: 50, priceEur: 136 },
@@ -538,6 +550,7 @@ export const products: Product[] = [
     name: "Jasmin Doré",
     concentration: "EdP",
     category: "damen",
+    profile: "blumig",
     season: ["summer", "autumn"],
     sizes: [
       { ml: 50, priceEur: 144 },
@@ -586,6 +599,7 @@ export const products: Product[] = [
     name: "Vetiver Impérial",
     concentration: "EdT",
     category: "herren",
+    profile: "frisch",
     season: ["spring", "summer"],
     sizes: [
       { ml: 50, priceEur: 99 },

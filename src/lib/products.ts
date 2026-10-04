@@ -3,20 +3,7 @@ import { products } from "@/data/products";
 import type { Product, ResolvedProduct, Season } from "@/data/types";
 import type { Locale } from "@/i18n/routing";
 import { CONCENTRATION_ORDER } from "@/lib/concentration";
-
-function resolve(product: Product, locale: Locale): ResolvedProduct {
-  return {
-    ...product,
-    image: { src: product.image.src, alt: product.image.alt[locale] },
-    notes: {
-      top: product.notes.top[locale],
-      heart: product.notes.heart[locale],
-      base: product.notes.base[locale],
-    },
-    tagline: product.tagline[locale],
-    description: product.description[locale],
-  };
-}
+import { resolveProduct as resolve } from "@/lib/localizeProduct";
 
 function minPrice(product: Product): number {
   return Math.min(...product.sizes.map((s) => s.priceEur));

@@ -5,6 +5,14 @@ export type Localized<T = string> = Record<Locale, T>;
 
 export type Season = "spring" | "summer" | "autumn" | "winter";
 
+/**
+ * Der dominante Charakter eines Dufts, von Hand aus den tatsächlichen Noten
+ * abgeleitet — nicht aus den freien Notentexten geraten. Grundlage für den
+ * Duft-Finder: ohne diese Einordnung ließe sich „holzig" nur über die
+ * deutschen Notentexte erkennen, und bräche bei Englisch/Kroatisch.
+ */
+export type ScentProfile = "frisch" | "blumig" | "holzig" | "orientalisch";
+
 export interface Product {
   slug: string;
   brand: string;
@@ -12,6 +20,7 @@ export interface Product {
   concentration: "EdC" | "EdT" | "EdP" | "Parfum" | "Extrait";
   category: "damen" | "herren" | "unisex";
   season: Season[];
+  profile: ScentProfile;
   sizes: { ml: number; priceEur: number }[];
   image: { src: string; alt: Localized };
   notes: { top: Localized<string[]>; heart: Localized<string[]>; base: Localized<string[]> };

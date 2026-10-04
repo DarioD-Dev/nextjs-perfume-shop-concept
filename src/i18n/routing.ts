@@ -13,6 +13,11 @@ export const routing = defineRouting({
     "/": "/",
     "/shop": { de: "/kollektion", en: "/shop", hr: "/kolekcija" },
     "/shop/[slug]": { de: "/kollektion/[slug]", en: "/shop/[slug]", hr: "/kolekcija/[slug]" },
+    "/duft-finder": {
+      de: "/duft-finder",
+      en: "/scent-finder",
+      hr: "/pronalazac-mirisa",
+    },
     "/about": { de: "/ueber-uns", en: "/about", hr: "/o-nama" },
     // Im Kroatischen dieselben Wörter wie im Deutschen bzw. Englischen — die
     // Einträge stehen trotzdem ausdrücklich da, damit sie nicht wie ein

@@ -5,6 +5,7 @@ import { BrandStrip } from "@/components/home/BrandStrip";
 import { CategoryTiles } from "@/components/home/CategoryTiles";
 import { EditorialSplit } from "@/components/home/EditorialSplit";
 import { FeaturedCollection } from "@/components/home/FeaturedCollection";
+import { FinderTeaser } from "@/components/home/FinderTeaser";
 import { Hero } from "@/components/home/Hero";
 import { NewsletterSection } from "@/components/home/NewsletterSection";
 import { StoryQuote } from "@/components/home/StoryQuote";
@@ -59,6 +60,10 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
         <Reveal>
           <CategoryTiles />
+        </Reveal>
+
+        <Reveal>
+          <FinderTeaser />
         </Reveal>
 
         <NewsletterSection />

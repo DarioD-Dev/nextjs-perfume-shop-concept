@@ -6,6 +6,7 @@
   "Nav": {
     "home": "Home",
     "shop": "Shop",
+    "finder": "Scent Finder",
     "about": "About",
     "contact": "Contact",
     "faq": "FAQ"
@@ -145,6 +146,35 @@
     "credit": "Website by Dario Dominkovic",
     "paymentCreditCard": "Credit card",
     "paymentBankTransfer": "Instant bank transfer"
+  },
+  "Finder": {
+    "metaTitle": "Scent Finder",
+    "metaDescription": "Four short questions, one matching fragrance from our collection.",
+    "title": "Find your scent",
+    "intro": "Four short questions — at the end, a fragrance from our collection that suits you.",
+    "stepOf": "Question {step} of {total}",
+    "questionSeason": "Which season do you wear it most?",
+    "questionProfile": "Which character appeals to you?",
+    "profileFrisch": "Fresh & light",
+    "profileBlumig": "Floral",
+    "profileHolzig": "Woody & bold",
+    "profileOrientalisch": "Warm & oriental",
+    "questionOccasion": "For everyday wear or a special occasion?",
+    "occasionAlltag": "Everyday",
+    "occasionBesonders": "Special occasion",
+    "questionBudget": "What's your budget?",
+    "budgetTief": "Up to € 140",
+    "budgetMittel": "€ 140–200",
+    "budgetHoch": "Over € 200",
+    "back": "Back",
+    "resultEyebrow": "This suits you",
+    "resultNote": "Based on your answers — from our current collection.",
+    "resultNotesTitle": "Fragrance notes",
+    "viewProduct": "View fragrance",
+    "restart": "Try again",
+    "teaserTitle": "Still undecided?",
+    "teaserBody": "Four short questions lead you to a matching fragrance from our collection.",
+    "teaserCta": "Start the scent finder"
   },
   "NotFound": {
     "title": "Page not found",

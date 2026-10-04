@@ -6,6 +6,7 @@
   "Nav": {
     "home": "Start",
     "shop": "Kollektion",
+    "finder": "Duft-Finder",
     "about": "Über uns",
     "contact": "Kontakt",
     "faq": "FAQ"
@@ -145,6 +146,35 @@
     "credit": "Website von Dario Dominkovic",
     "paymentCreditCard": "Kreditkarte",
     "paymentBankTransfer": "Sofortüberweisung"
+  },
+  "Finder": {
+    "metaTitle": "Duft-Finder",
+    "metaDescription": "Vier kurze Fragen, ein passender Duft aus unserer Kollektion.",
+    "title": "Finde deinen Duft",
+    "intro": "Vier kurze Fragen — am Ende steht ein Duft aus unserer Kollektion, der zu dir passt.",
+    "stepOf": "Frage {step} von {total}",
+    "questionSeason": "Zu welcher Jahreszeit trägst du ihn am liebsten?",
+    "questionProfile": "Welcher Charakter spricht dich an?",
+    "profileFrisch": "Frisch & leicht",
+    "profileBlumig": "Blumig",
+    "profileHolzig": "Holzig & herb",
+    "profileOrientalisch": "Warm & orientalisch",
+    "questionOccasion": "Für den Alltag oder einen besonderen Anlass?",
+    "occasionAlltag": "Alltag",
+    "occasionBesonders": "Besonderer Anlass",
+    "questionBudget": "In welchem Preisrahmen?",
+    "budgetTief": "Bis 140 €",
+    "budgetMittel": "140–200 €",
+    "budgetHoch": "Über 200 €",
+    "back": "Zurück",
+    "resultEyebrow": "Das passt zu dir",
+    "resultNote": "Basierend auf deiner Auswahl — aus unserer aktuellen Kollektion.",
+    "resultNotesTitle": "Duftnoten",
+    "viewProduct": "Zum Duft",
+    "restart": "Nochmal versuchen",
+    "teaserTitle": "Noch unentschlossen?",
+    "teaserBody": "Vier kurze Fragen führen dich zu einem passenden Duft aus unserer Kollektion.",
+    "teaserCta": "Duft-Finder starten"
   },
   "NotFound": {
     "title": "Seite nicht gefunden",
