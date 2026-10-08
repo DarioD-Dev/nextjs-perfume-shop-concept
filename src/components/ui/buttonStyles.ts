@@ -27,7 +27,12 @@ export function buttonStyles({
   className?: string;
 }) {
   return cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-sans uppercase tracking-wide transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+    "inline-flex items-center justify-center gap-2 rounded-full font-sans uppercase tracking-wide transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+    // :active statt nur :hover — ein Antippen am Handy löst nie :hover aus,
+    // ohne das hier blieb jeder Button auf Touch-Geräten ohne jede Rückmeldung.
+    // "link" bleibt ohne Skalierung: Fließtext, der beim Antippen "springt",
+    // wirkt wie ein Darstellungsfehler, nicht wie ein Knopf.
+    variant !== "link" && "active:scale-[0.97]",
     variant !== "link" && sizeStyles[size],
     variantStyles[variant],
     className,

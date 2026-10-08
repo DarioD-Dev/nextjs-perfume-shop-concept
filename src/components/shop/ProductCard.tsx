@@ -18,7 +18,7 @@ export function ProductCard({ product, locale }: { product: ResolvedProduct; loc
           alt={product.image.alt}
           fill
           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
         />
       </ProductImageCursor>
       <div className="flex flex-col gap-1">

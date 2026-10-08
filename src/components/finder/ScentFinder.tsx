@@ -70,6 +70,10 @@ const TOTAL_STEPS = 4;
 // Wachstumsbewegung wie die Nav-Unterstreichung in Nav.tsx, hier nur auf
 // eine Karte statt auf einen Link angewendet. Kein Farbfächer pro Karte:
 // Die Palette ist bewusst auf Gold/Rost als einzigen Akzent begrenzt.
+//
+// `active:` steht überall neben `hover:` — am Handy feuert :hover nie, nur
+// :active beim Antippen. Ohne das hier passierte beim Antippen bis zum
+// nächsten Schritt optisch gar nichts.
 function OptionCard({
   icon: Icon,
   label,
@@ -83,22 +87,22 @@ function OptionCard({
     <button
       type="button"
       onClick={onClick}
-      className="group flex flex-col items-center gap-4 rounded-2xl border border-border-strong bg-surface-raised px-5 py-9 transition-all duration-300 hover:-translate-y-1 hover:border-accent-gold hover:shadow-[0_20px_45px_-28px_rgba(0,0,0,0.5)]"
+      className="group flex flex-col items-center gap-4 rounded-2xl border border-border-strong bg-surface-raised px-5 py-9 transition-all duration-300 hover:-translate-y-1 hover:border-accent-gold hover:shadow-[0_20px_45px_-28px_rgba(0,0,0,0.5)] active:scale-95 active:border-accent-gold"
     >
-      <span className="flex size-16 items-center justify-center rounded-full border border-border-strong text-text transition-colors duration-300 group-hover:border-accent-gold group-hover:text-accent-gold">
+      <span className="flex size-16 items-center justify-center rounded-full border border-border-strong text-text transition-colors duration-300 group-hover:border-accent-gold group-hover:text-accent-gold group-active:border-accent-gold group-active:text-accent-gold">
         <Icon size={26} strokeWidth={1.25} aria-hidden />
       </span>
       <span className="font-sans text-sm uppercase tracking-wide text-text">{label}</span>
       <span
         aria-hidden
-        className="h-px w-6 origin-center scale-x-0 bg-accent-gold transition-transform duration-300 group-hover:scale-x-100"
+        className="h-px w-6 origin-center scale-x-0 bg-accent-gold transition-transform duration-300 group-hover:scale-x-100 group-active:scale-x-100"
       />
     </button>
   );
 }
 
 const BACK_BUTTON =
-  "flex items-center gap-1.5 font-sans text-xs uppercase tracking-wide text-text-secondary transition-colors hover:text-accent-gold";
+  "flex items-center gap-1.5 font-sans text-xs uppercase tracking-wide text-text-secondary transition hover:text-accent-gold active:scale-95 active:text-accent-gold";
 
 export function ScentFinder({ locale }: { locale: Locale }) {
   const t = useTranslations("Finder");

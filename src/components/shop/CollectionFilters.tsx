@@ -214,7 +214,7 @@ export function CollectionFilters({
                 aria-pressed={active}
                 onClick={() => updateParam("category", active ? "" : category)}
                 className={cn(
-                  "flex items-center gap-1.5 rounded-full border px-4 py-2 font-sans text-xs uppercase tracking-wide transition-colors",
+                  "flex items-center gap-1.5 rounded-full border px-4 py-2 font-sans text-xs uppercase tracking-wide transition active:scale-95",
                   active
                     ? "border-accent-gold bg-accent-gold text-text-on-accent"
                     : "border-border-strong text-text hover:border-accent-gold hover:text-accent-gold",
@@ -234,7 +234,7 @@ export function CollectionFilters({
           aria-controls={panelId}
           onClick={toggleMoreFilters}
           className={cn(
-            "flex items-center gap-1.5 rounded-full border px-4 py-2 font-sans text-xs uppercase tracking-wide transition-colors",
+            "flex items-center gap-1.5 rounded-full border px-4 py-2 font-sans text-xs uppercase tracking-wide transition active:scale-95",
             moreFiltersOpen || hasMoreFiltersActive
               ? "border-accent-gold text-accent-gold"
               : "border-border-strong text-text hover:border-accent-gold hover:text-accent-gold",
