@@ -285,6 +285,7 @@ export const products: Product[] = [
     concentration: "Extrait",
     category: "unisex",
     profile: "orientalisch",
+    soldOut: true,
     season: ["autumn", "winter"],
     sizes: [
       { ml: 30, priceEur: 262 },
@@ -461,6 +462,7 @@ export const products: Product[] = [
     concentration: "Extrait",
     category: "herren",
     profile: "holzig",
+    soldOut: true,
     season: ["autumn", "winter"],
     sizes: [
       { ml: 30, priceEur: 258 },

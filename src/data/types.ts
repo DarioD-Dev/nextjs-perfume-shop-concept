@@ -21,6 +21,10 @@ export interface Product {
   category: "damen" | "herren" | "unisex";
   season: Season[];
   profile: ScentProfile;
+  /** Fehlt bei den meisten Produkten bewusst — `true` ist die Ausnahme, kein
+   *  Feld, das jedes Produkt explizit pflegen muss. Siehe `inStock` in
+   *  lib/products.ts, wo die Lücke als "verfügbar" gelesen wird. */
+  soldOut?: true;
   sizes: { ml: number; priceEur: number }[];
   image: { src: string; alt: Localized };
   notes: { top: Localized<string[]>; heart: Localized<string[]>; base: Localized<string[]> };

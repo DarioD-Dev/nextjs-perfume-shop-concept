@@ -98,7 +98,7 @@ export default async function ProductPage({ params }: PageProps<"/[locale]/shop/
                 </p>
               </div>
 
-              <PurchasePanel sizes={product.sizes} locale={locale} />
+              <PurchasePanel sizes={product.sizes} locale={locale} soldOut={product.soldOut} />
 
               <Rule className="opacity-30" />
               <FragranceNotes notes={product.notes} />
