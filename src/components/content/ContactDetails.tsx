@@ -20,7 +20,7 @@ export async function ContactDetails() {
         </p>
         <a
           href="mailto:dario.dominkovic@hotmail.com"
-          className="font-sans text-text-secondary transition-colors hover:text-accent-gold"
+          className="inline-block py-1 font-sans text-text-secondary transition-colors hover:text-accent-gold"
         >
           dario.dominkovic@hotmail.com
         </a>

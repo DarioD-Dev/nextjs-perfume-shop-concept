@@ -49,13 +49,16 @@ export async function ProductBreadcrumbs({
       />
       <ol className="flex flex-wrap items-center gap-2">
         <li>
-          <Link href="/" className="transition-colors hover:text-accent-gold">
+          <Link href="/" className="inline-block py-1.5 transition-colors hover:text-accent-gold">
             {tNav("home")}
           </Link>
         </li>
         <li aria-hidden>/</li>
         <li>
-          <Link href="/shop" className="transition-colors hover:text-accent-gold">
+          <Link
+            href="/shop"
+            className="inline-block py-1.5 transition-colors hover:text-accent-gold"
+          >
             {tNav("shop")}
           </Link>
         </li>
