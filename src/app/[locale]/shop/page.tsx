@@ -12,7 +12,7 @@ import { ProductGrid } from "@/components/shop/ProductGrid";
 import { Container } from "@/components/ui/Container";
 import { Rule } from "@/components/ui/Rule";
 import { Section } from "@/components/ui/Section";
-import type { Product, Season } from "@/data/types";
+import type { Product, ScentProfile, Season } from "@/data/types";
 import { CONCENTRATION_ORDER } from "@/lib/concentration";
 import { pickMessages } from "@/lib/pickMessages";
 import {
@@ -26,6 +26,7 @@ import {
 
 const SORT_VALUES = ["price-asc", "price-desc", "newest"] as const;
 const SEASON_VALUES = ["spring", "summer", "autumn", "winter"] as const;
+const PROFILE_VALUES = ["frisch", "blumig", "holzig", "orientalisch"] as const;
 
 function isSortValue(value: string | undefined): value is ProductFilters["sort"] {
   return value !== undefined && (SORT_VALUES as readonly string[]).includes(value);
@@ -33,6 +34,10 @@ function isSortValue(value: string | undefined): value is ProductFilters["sort"]
 
 function isSeasonValue(value: string | undefined): value is Season {
   return value !== undefined && (SEASON_VALUES as readonly string[]).includes(value);
+}
+
+function isProfileValue(value: string | undefined): value is ScentProfile {
+  return value !== undefined && (PROFILE_VALUES as readonly string[]).includes(value);
 }
 
 function isConcentrationValue(value: string | undefined): value is Product["concentration"] {
@@ -79,6 +84,7 @@ export default async function ShopPage({ params, searchParams }: PageProps<"/[lo
   const t = await getTranslations({ locale, namespace: "Shop" });
   const sp = await searchParams;
   const season = ersterWert(sp.season);
+  const profile = ersterWert(sp.profile);
   const concentration = ersterWert(sp.concentration);
   const sort = ersterWert(sp.sort);
 
@@ -86,6 +92,7 @@ export default async function ShopPage({ params, searchParams }: PageProps<"/[lo
     brand: ersterWert(sp.brand) || undefined,
     category: ersterWert(sp.category) || undefined,
     season: isSeasonValue(season) ? season : undefined,
+    profile: isProfileValue(profile) ? profile : undefined,
     note: ersterWert(sp.note) || undefined,
     concentration: isConcentrationValue(concentration) ? concentration : undefined,
     search: ersterWert(sp.search) || undefined,
@@ -102,8 +109,10 @@ export default async function ShopPage({ params, searchParams }: PageProps<"/[lo
     getPriceRange(),
     // Shop: CollectionFilters/PriceRangeFilter/ProductImageCursor/SortSelect/
     // BackToTopButton. Home: CollectionFilters' category-pill labels
-    // (tHome). Footer: NewsletterForm inside NewsletterSection below.
-    getMessages().then((m) => pickMessages(m, ["Shop", "Home", "Footer"] as const)),
+    // (tHome). Finder: dieselben Duftfamilie-Labels wie der Duft-Finder,
+    // nicht noch einmal übersetzt. Footer: NewsletterForm in
+    // NewsletterSection unten.
+    getMessages().then((m) => pickMessages(m, ["Shop", "Home", "Finder", "Footer"] as const)),
   ]);
 
   return (

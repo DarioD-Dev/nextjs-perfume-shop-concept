@@ -2,12 +2,16 @@
 
 import {
   ChevronDown,
+  Citrus,
+  Flame,
+  Flower,
   Flower2,
   Leaf,
   Mars,
   Search,
   Snowflake,
   Sun,
+  TreeDeciduous,
   Venus,
   VenusAndMars,
   X,
@@ -53,6 +57,26 @@ const SEASON_ICONS = {
   winter: Snowflake,
 } as const;
 
+// Dieselben vier Charaktere wie beim Duft-Finder (src/components/finder/
+// ScentFinder.tsx), dieselben Icons, dieselben Übersetzungsschlüssel aus
+// dem "Finder"-Namespace — eine Duftfamilie heißt hier nicht anders als
+// dort.
+const PROFILES = ["frisch", "blumig", "holzig", "orientalisch"] as const;
+
+const PROFILE_LABEL_KEYS = {
+  frisch: "profileFrisch",
+  blumig: "profileBlumig",
+  holzig: "profileHolzig",
+  orientalisch: "profileOrientalisch",
+} as const;
+
+const PROFILE_ICONS = {
+  frisch: Citrus,
+  blumig: Flower,
+  holzig: TreeDeciduous,
+  orientalisch: Flame,
+} as const;
+
 type PriceRange = { min: number; max: number };
 
 // "Mehr Filter" folds open below the primary row (grid-rows 0fr/1fr trick —
@@ -74,6 +98,7 @@ export function CollectionFilters({
 }) {
   const t = useTranslations("Shop");
   const tHome = useTranslations("Home");
+  const tFinder = useTranslations("Finder");
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -122,6 +147,7 @@ export function CollectionFilters({
   const hasMoreFiltersActive =
     Boolean(searchParams.get("brand")) ||
     Boolean(searchParams.get("season")) ||
+    Boolean(searchParams.get("profile")) ||
     Boolean(searchParams.get("note")) ||
     Boolean(searchParams.get("concentration")) ||
     Boolean(searchParams.get("priceMin")) ||
@@ -164,6 +190,17 @@ export function CollectionFilters({
       return {
         value: season,
         label: t(SEASON_LABEL_KEYS[season]),
+        icon: <Icon size={14} strokeWidth={1.5} />,
+      };
+    }),
+  ];
+  const profileOptions = [
+    { value: "", label: t("allProfiles") },
+    ...PROFILES.map((profile) => {
+      const Icon = PROFILE_ICONS[profile];
+      return {
+        value: profile,
+        label: tFinder(PROFILE_LABEL_KEYS[profile]),
         icon: <Icon size={14} strokeWidth={1.5} />,
       };
     }),
@@ -283,6 +320,13 @@ export function CollectionFilters({
               value={searchParams.get("season") ?? ""}
               onChange={(value) => updateParam("season", value)}
               options={seasonOptions}
+            />
+            <Select
+              ariaLabel={t("filterProfile")}
+              placeholder={t("filterProfile")}
+              value={searchParams.get("profile") ?? ""}
+              onChange={(value) => updateParam("profile", value)}
+              options={profileOptions}
             />
             <Select
               ariaLabel={t("filterNote")}

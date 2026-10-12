@@ -1,6 +1,6 @@
 import "server-only";
 import { products } from "@/data/products";
-import type { Product, ResolvedProduct, Season } from "@/data/types";
+import type { Product, ResolvedProduct, ScentProfile, Season } from "@/data/types";
 import type { Locale } from "@/i18n/routing";
 import { CONCENTRATION_ORDER } from "@/lib/concentration";
 import { resolveProduct as resolve } from "@/lib/localizeProduct";
@@ -13,6 +13,7 @@ export type ProductFilters = {
   brand?: string;
   category?: string;
   season?: Season;
+  profile?: ScentProfile;
   note?: string;
   concentration?: Product["concentration"];
   search?: string;
@@ -46,6 +47,10 @@ function applyFilters(list: Product[], locale: Locale, filters?: ProductFilters)
   if (filters?.season) {
     const season = filters.season;
     result = result.filter((p) => p.season.includes(season));
+  }
+  if (filters?.profile) {
+    const profile = filters.profile;
+    result = result.filter((p) => p.profile === profile);
   }
   if (filters?.note) {
     const note = filters.note;
