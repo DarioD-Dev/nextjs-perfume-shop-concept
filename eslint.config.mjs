@@ -2,6 +2,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import prettier from "eslint-config-prettier";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -57,6 +58,20 @@ const eslintConfig = defineConfig([
       // Seitenaufruf lädt alles neu — Middleware, Layout, Sprache.
       "@next/next/no-html-link-for-pages": "off",
     },
+  },
+  {
+    files: ["**/*.{js,jsx,mjs,ts,tsx,mts,cts}"],
+    rules: {
+      ...jsxA11y.flatConfigs.recommended.rules,
+      // Eigene <Label>-Komponente wie <label> prüfen: Text plus htmlFor oder
+      // verschachteltes Feld.
+      "jsx-a11y/label-has-associated-control": ["error", { labelComponents: ["Label"] }],
+    },
+  },
+  {
+    // Der Wrapper selbst reicht htmlFor über ...props durch; das sieht die Regel nicht.
+    files: ["src/components/ui/Label.tsx"],
+    rules: { "jsx-a11y/label-has-associated-control": "off" },
   },
   // Override default ignores of eslint-config-next.
   globalIgnores([
